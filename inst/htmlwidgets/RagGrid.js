@@ -7,8 +7,8 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     let gridOptions={};
     // TODO: define shared variables for this instance
-    var sel_handle = new crosstalk.SelectionHandle();
-    var filter_handle = new crosstalk.FilterHandle();
+    const sel_handle = new crosstalk.SelectionHandle();
+    const filter_handle = new crosstalk.FilterHandle();
     sel_handle.on("change", function(e) {
       if (e.sender !== sel_handle) {
         // scatter.clearBrush(); 
