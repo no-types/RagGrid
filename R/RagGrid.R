@@ -6,15 +6,30 @@
 #'
 #' @export
 RagGrid <- function(visualData, options=list(), licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
- 
-  isNumeric = vapply(visualData, is.numeric, logical(1))  
+
+  if (crosstalk::is.SharedData(visualData)) {
+    # Using Crosstalk
+    key <- visualData$key()
+    group <- visualData$groupName()
+    visualData <- visualData$origData()
+  } else {
+    # Not using Crosstalk
+    key <- NULL
+    group <- NULL
+  }
+
+  isNumeric = vapply(visualData, is.numeric, logical(1))
   isNumeric = lapply(split(isNumeric, names(isNumeric)), unname)
   # forward options using x
   x = list(
     data = visualData,
     gridOptions=options,
     licenseKey=licenseKey,
-    isNumeric=isNumeric
+    isNumeric=isNumeric,
+    settings = list(
+      crosstalk_key = key,
+      crosstalk_group = group
+    )
   )
 
   # create widget
@@ -24,7 +39,8 @@ RagGrid <- function(visualData, options=list(), licenseKey=NULL, width = NULL, h
     width = width,
     height = height,
     package = 'RagGrid',
-    elementId = elementId
+    elementId = elementId,
+    dependencies = crosstalk::crosstalkLibs()
   )
 }
 

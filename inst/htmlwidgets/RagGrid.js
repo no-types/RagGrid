@@ -5,13 +5,34 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-
+    let gridOptions={};
     // TODO: define shared variables for this instance
-
+    var sel_handle = new crosstalk.SelectionHandle();
+    var filter_handle = new crosstalk.FilterHandle();
+    sel_handle.on("change", function(e) {
+      if (e.sender !== sel_handle) {
+        // scatter.clearBrush(); 
+        gridOptions.api.forEachNode((node)=>{
+        if(node.data && node.data.ctKey && e.value.indexOf(node.data.ctKey)!=-1){
+          node.setSelected(true);
+        }
+        else{
+          node.setSelected(false);
+        }
+      });
+      }
+ 
+      console.log(e);
+    });
+    filter_handle.on("change", function(e) {
+      // scatter.filter(e.value);
+      console.log(e);
+    });
     return {
 
       renderValue: function(x) {
          const data=x.data;
+        
          let defaultGridOptions={
             rowSelection: 'multiple',
             enableSorting: true,
@@ -24,23 +45,39 @@ HTMLWidgets.widget({
             enableColResize: true,
             pagination: true,
             paginationAutoPageSize: true,
+            onRowClicked: event =>{
+                let selectionKeys=[];
+                gridOptions.api.getSelectedNodes().forEach(node => {
+                  if(node.data && node.data.ctKey){
+                    selectionKeys.push(node.data.ctKey);
+                  }
+                });
+                sel_handle.set(selectionKeys);
+            }
          }
+         sel_handle.setGroup(x.settings.crosstalk_group);
+         filter_handle.setGroup(x.settings.crosstalk_group);
 
-         let gridOptions=Object.assign(defaultGridOptions,x.gridOptions);
+         gridOptions=Object.assign(defaultGridOptions,x.gridOptions);
          const rowHeaders = Object.keys(data);
          if(rowHeaders.length==0){
            return;
          }
+         let filedRowHeaderMap={};
+         rowHeaders.forEach((rowHeader)=>{
+           filedRowHeaderMap[rowHeader]=rowHeader.replace(".","_");
+         });
          const rowLength = data[rowHeaders[0]].length;
-         const colDef = rowHeaders.map((headerName)=>{
-           return {'field':headerName,enableValue:x.isNumeric[headerName],enableRowGroup:!x.isNumeric[headerName],enablePivot:!x.isNumeric[headerName]};
+         const colDef = rowHeaders.map((rowHeader)=>{
+           return {'headerName':rowHeader,'field':filedRowHeaderMap[rowHeader],enableValue:x.isNumeric[rowHeader],enableRowGroup:!x.isNumeric[rowHeader],enablePivot:!x.isNumeric[rowHeader]};
          });
          let rowDataList=[];
          for(let rowIndex=0;rowIndex<rowLength;rowIndex++){
             let rowData = {};
-            rowHeaders.forEach((headerName)=>{
-                rowData[headerName] = data[headerName][rowIndex];
+            rowHeaders.forEach((rowHeader)=>{
+                rowData[filedRowHeaderMap[rowHeader]] = data[rowHeader][rowIndex];
             });
+            rowData.ctKey=x.settings.crosstalk_key[rowIndex];
             rowDataList.push(rowData);
          }
          if(x.licenseKey){
