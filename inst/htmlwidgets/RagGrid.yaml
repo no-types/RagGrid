@@ -1,0 +1,10 @@
+# (uncomment to add a dependency)
+  dependencies:
+   - name: aggrid
+     version: 17.1.0
+     src: htmlwidgets/lib/aggrid
+     script: 
+          - aggrid.min.js
+     stylesheet:
+          - aggrid.css
+          - agbalham.css
