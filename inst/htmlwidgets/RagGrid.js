@@ -7,8 +7,8 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     let gridOptions={};
     // TODO: define shared variables for this instance
-    var sel_handle = new crosstalk.SelectionHandle();
-    var filter_handle = new crosstalk.FilterHandle();
+    const sel_handle = new crosstalk.SelectionHandle();
+    const filter_handle = new crosstalk.FilterHandle();
     sel_handle.on("change", function(e) {
       if (e.sender !== sel_handle) {
         // scatter.clearBrush(); 
@@ -55,8 +55,11 @@ HTMLWidgets.widget({
                 sel_handle.set(selectionKeys);
             }
          }
-         sel_handle.setGroup(x.settings.crosstalk_group);
-         filter_handle.setGroup(x.settings.crosstalk_group);
+         
+         if(x.settings.crosstalk_group){
+           sel_handle.setGroup(x.settings.crosstalk_group);
+           filter_handle.setGroup(x.settings.crosstalk_group);
+         }
 
          gridOptions=Object.assign(defaultGridOptions,x.gridOptions);
          const rowHeaders = Object.keys(data);
@@ -77,7 +80,9 @@ HTMLWidgets.widget({
             rowHeaders.forEach((rowHeader)=>{
                 rowData[filedRowHeaderMap[rowHeader]] = data[rowHeader][rowIndex];
             });
-            rowData.ctKey=x.settings.crosstalk_key[rowIndex];
+            if(x.settings.crosstalk_key){
+               rowData.ctKey=x.settings.crosstalk_key[rowIndex];
+            }
             rowDataList.push(rowData);
          }
          if(x.licenseKey){
