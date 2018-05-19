@@ -55,8 +55,11 @@ HTMLWidgets.widget({
                 sel_handle.set(selectionKeys);
             }
          }
-         sel_handle.setGroup(x.settings.crosstalk_group);
-         filter_handle.setGroup(x.settings.crosstalk_group);
+         
+         if(x.settings.crosstalk_group){
+           sel_handle.setGroup(x.settings.crosstalk_group);
+           filter_handle.setGroup(x.settings.crosstalk_group);
+         }
 
          gridOptions=Object.assign(defaultGridOptions,x.gridOptions);
          const rowHeaders = Object.keys(data);
@@ -77,7 +80,9 @@ HTMLWidgets.widget({
             rowHeaders.forEach((rowHeader)=>{
                 rowData[filedRowHeaderMap[rowHeader]] = data[rowHeader][rowIndex];
             });
-            rowData.ctKey=x.settings.crosstalk_key[rowIndex];
+            if(x.settings.crosstalk_key){
+               rowData.ctKey=x.settings.crosstalk_key[rowIndex];
+            }
             rowDataList.push(rowData);
          }
          if(x.licenseKey){
