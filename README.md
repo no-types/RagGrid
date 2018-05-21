@@ -15,5 +15,5 @@ You may install the development version using **devtools**:
 # the development version
 devtools::install_github('praveenn-vbi/RagGrid')
 
-# then try RagGrid::RagGrid(iris) as a hello world example
+# then try RagGrid::aggrid(iris) as a hello world example
 ```
