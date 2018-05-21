@@ -1,7 +1,7 @@
 # R agGrid
 R interface to ag-grid.
 
-This package provides a function `RagGrid()` to display R data via the [ag-grid](https://www.ag-grid.com/) library.
+This package provides a function `aggrid()` to display R data via the [ag-grid](https://www.ag-grid.com/) library.
 
 ## Installation
 
