@@ -1,28 +1,42 @@
-#' <Add Title>
+#' Create a HTML widget using the ag-grid library
 #'
-#' <Add Description>
-#'
+#' This function creates a HTML widget to display matrix or a dataframe using ag-grid.
+#' @param data a dataobject (either a matrix or a dataframe)
+#' @param options a list of ag-grid grid options
+#' @param licenseKey if you wish you to use the enterprise version of ag-grid
+#' @param width,height Width/Height in pixels (optional, defaults to automatic
+#'   sizing)
+#' @param elementId An id for the widget (a random string by default).
 #' @import htmlwidgets
 #'
 #' @export
-RagGrid <- function(visualData, options=list(), licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
+aggrid <- function(data, options=list(), licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
-  if (crosstalk::is.SharedData(visualData)) {
+  if (crosstalk::is.SharedData(data)) {
     # Using Crosstalk
-    key <- visualData$key()
-    group <- visualData$groupName()
-    visualData <- visualData$origData()
+    key <- data$key()
+    group <- data$groupName()
+    data <- data$origData()
   } else {
     # Not using Crosstalk
     key <- NULL
     group <- NULL
   }
 
-  isNumeric = vapply(visualData, is.numeric, logical(1))
+  if (is.data.frame(data)) {
+    data = as.data.frame(data)
+  }else{
+    if (!is.matrix(data)) stop(
+      "'data' must be either a matrix or a data frame"
+    )
+    data = as.data.frame(data)
+  }
+
+  isNumeric = vapply(data, is.numeric, logical(1))
   isNumeric = lapply(split(isNumeric, names(isNumeric)), unname)
   # forward options using x
   x = list(
-    data = visualData,
+    data = data,
     gridOptions=options,
     licenseKey=licenseKey,
     isNumeric=isNumeric,
@@ -40,6 +54,9 @@ RagGrid <- function(visualData, options=list(), licenseKey=NULL, width = NULL, h
     height = height,
     package = 'RagGrid',
     elementId = elementId,
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      knitr.figure = FALSE, knitr.defaultWidth = "100%", knitr.defaultHeight = "auto"
+    ),
     dependencies = crosstalk::crosstalkLibs()
   )
 }
