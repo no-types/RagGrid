@@ -1,6 +1,6 @@
 Package: RagGrid
 Type: Package
-Title: A Wrapper of the JavaScript Library 'ag-Grid'.
+Title: A Wrapper of the JavaScript Library 'agGrid'.
 Version: 0.1.1
 Authors@R: c(
     person("Praveen", "N", email = "npu@live.in", role = c("aut", "cre")),
