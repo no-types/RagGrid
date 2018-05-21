@@ -1,2 +1,15 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$
+^\.travis\.yml$
+^appveyor\.yml$
+^docs$
+^_pkgdown\.yml$
+^revdep$
+^CONDUCT\.md$
+^inst/mediasrc$
+^cran-comments\.md$
+^ISSUE_TEMPLATE\.md$
+^LICENSE\.md$
+^PULL_REQUEST_TEMPLATE\.md$
+^_config\.yml$
