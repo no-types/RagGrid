@@ -65,11 +65,15 @@ aggrid <- function(data, options=list(), licenseKey=NULL, width = NULL, height =
     dependencies = deps
   )
 }
-
+#' Dependency Path
+#' @param ... plugin
 depPath = function(...) {
   system.file('htmlwidgets', 'lib', ..., package = 'RagGrid')
 }
 
+#' Get dependencies
+#' @param plugin plugin
+#' @param version version
 getDeps = function(plugin,version) {
   d = depPath(plugin)
   htmlDependency(
