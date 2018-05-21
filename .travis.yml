@@ -6,7 +6,6 @@ cache:
   packages: yes
 
 r:
- - oldrel
  - release
 
 r_github_packages:
