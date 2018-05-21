@@ -8,6 +8,7 @@
 #'   sizing)
 #' @param elementId An id for the widget (a random string by default).
 #' @import htmlwidgets
+#' @importFrom htmltools tags htmlDependency
 #'
 #' @export
 aggrid <- function(data, options=list(), licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
@@ -45,7 +46,11 @@ aggrid <- function(data, options=list(), licenseKey=NULL, width = NULL, height =
       crosstalk_group = group
     )
   )
+  deps = list()
+  if(!is.null(licenseKey))
+    deps = c(deps,list(getDeps("aggrid-enterprice","17.1.1")))
 
+  deps = c(deps, crosstalk::crosstalkLibs())
   # create widget
   htmlwidgets::createWidget(
     name = 'RagGrid',
@@ -57,10 +62,21 @@ aggrid <- function(data, options=list(), licenseKey=NULL, width = NULL, height =
     sizingPolicy = htmlwidgets::sizingPolicy(
       knitr.figure = FALSE, knitr.defaultWidth = "100%", knitr.defaultHeight = "auto"
     ),
-    dependencies = crosstalk::crosstalkLibs()
+    dependencies = deps
   )
 }
 
+depPath = function(...) {
+  system.file('htmlwidgets', 'lib', ..., package = 'RagGrid')
+}
+
+getDeps = function(plugin,version) {
+  d = depPath(plugin)
+  htmlDependency(
+     tolower(plugin), version, src = d,
+    script = list.files(d, '[.]js$'), stylesheet = list.files(d, '[.]css$')
+  )
+}
 
 #' Shiny bindings for RagGrid
 #'
