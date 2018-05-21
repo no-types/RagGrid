@@ -1,4 +1,7 @@
 # R agGrid
+
+[![Build Status](https://api.travis-ci.org/no-types/RagGrid.svg?branch=master)](https://travis-ci.org/no-types/RagGrid)
+
 R interface to ag-grid.
 
 This package provides a function `aggrid()` to display R data via the [ag-grid](https://www.ag-grid.com/) library.
