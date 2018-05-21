@@ -1,6 +1,6 @@
 # R agGrid
 
-[![Build Status](https://api.travis-ci.org/no-types/RagGrid.svg?branch=master)](https://travis-ci.org/no-types/RagGrid)
+[![Build Status](https://travis-ci.com/no-types/RagGrid.svg?branch=master)](https://travis-ci.com/no-types/RagGrid)
 
 R interface to ag-grid.
 
