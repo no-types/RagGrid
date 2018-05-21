@@ -17,7 +17,8 @@ License: MIT
 Imports:
     htmltools (>= 0.3.6),
     htmlwidgets (>= 1.0),
-    crosstalk
+    crosstalk,
+    knitr
 Suggests:
     jsonlite (>= 0.9.16),
     rmarkdown,
