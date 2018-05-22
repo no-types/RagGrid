@@ -1,6 +1,7 @@
 # R agGrid
 
 [![Build Status](https://travis-ci.com/no-types/RagGrid.svg?branch=master)](https://travis-ci.com/no-types/RagGrid)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
 R interface to ag-grid.
 
@@ -20,3 +21,5 @@ devtools::install_github('no-types/RagGrid')
 
 # then try RagGrid::aggrid(iris) as a hello world example
 ```
+
+![](assets/aggrid-basic-usage.gif)
