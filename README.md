@@ -20,3 +20,5 @@ devtools::install_github('no-types/RagGrid')
 
 # then try RagGrid::aggrid(iris) as a hello world example
 ```
+
+![](assets/aggrid-basic-usage.gif)
