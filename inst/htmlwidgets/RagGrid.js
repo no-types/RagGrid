@@ -39,8 +39,6 @@ HTMLWidgets.widget({
             enableFilter: true,
             groupMultiAutoColumn: true,
             groupSuppressAutoColumn: true,
-            enableStatusBar: true,
-            alwaysShowStatusBar: false, // status bar can be be fixed
             enableRangeSelection: false,
             enableColResize: true,
             pagination: true,
@@ -55,6 +53,14 @@ HTMLWidgets.widget({
                 sel_handle.set(selectionKeys);
             }
          }
+
+         if(x.licenseKey){
+          let enterpriseGridOptions = {
+              enableStatusBar: true,
+              alwaysShowStatusBar: false, // status bar can be be fixed
+          }
+          defaultGridOptions=Object.assign(defaultGridOptions,enterpriseGridOptions);
+        }
          
          if(x.settings.crosstalk_group){
            sel_handle.setGroup(x.settings.crosstalk_group);
@@ -72,7 +78,14 @@ HTMLWidgets.widget({
          });
          const rowLength = data[rowHeaders[0]].length;
          const colDef = rowHeaders.map((rowHeader)=>{
-           return {'headerName':rowHeader,'field':filedRowHeaderMap[rowHeader],enableValue:x.isNumeric[rowHeader],enableRowGroup:!x.isNumeric[rowHeader],enablePivot:!x.isNumeric[rowHeader]};
+          let options =  {'headerName':rowHeader,'field':filedRowHeaderMap[rowHeader],
+                          enableValue:x.isNumeric[rowHeader] };
+
+          let enterpriseColumnDefinitionOptions = x.licenseKey ? {
+            enableRowGroup:!x.isNumeric[rowHeader],
+            enablePivot:!x.isNumeric[rowHeader]
+           }:{};
+           return Object.assign(options,enterpriseColumnDefinitionOptions);
          });
          let rowDataList=[];
          for(let rowIndex=0;rowIndex<rowLength;rowIndex++){
