@@ -13,3 +13,10 @@ r_github_packages:
 
 after_success:
   - Rscript -e 'library(covr);codecov()'
+ 
+notifications:
+  email:
+    recipients:
+      - srikkanth18@gmail.com
+    on_success: change
+    on_failure: always
