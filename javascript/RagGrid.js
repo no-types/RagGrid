@@ -32,6 +32,7 @@ HTMLWidgets.widget({
             renderValue: function(x) {
                 const data = x.data;
                 const colOpts = x.colOpts;
+                const formattingOptions = x.formattingOptions;
                 let defaultGridOptions = {
                     rowSelection: 'multiple',
                     enableSorting: true,
@@ -80,13 +81,23 @@ HTMLWidgets.widget({
                     let options = {
                         'headerName': rowHeader,
                         'field': filedRowHeaderMap[rowHeader],
-                        enableValue: x.isNumeric[rowHeader]
+                        enableValue: x.isNumeric[rowHeader],
+
                     };
 
                     if (x.isNumeric[rowHeader]) {
-                        options["cellStyle"] = {
+                        options.cellStyle = {
                             'text-align': 'right'
                         };
+                        options.valueFormatter = (params) => {
+                            if(!params.value){
+                                return null;
+                            }
+                            if(formattingOptions[rowHeader]){
+                               return numeral(params.value).format(formattingOptions[rowHeader]);
+                            }
+                            return params.value;
+                        }
                     }
                     
                     options = colOpts[rowHeader]?Object.assign(options,colOpts[rowHeader]):options;
