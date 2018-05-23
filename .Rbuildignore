@@ -13,3 +13,8 @@
 ^LICENSE\.md$
 ^PULL_REQUEST_TEMPLATE\.md$
 ^_config\.yml$
+^package\.json$
+^package-lock.json$
+^node_modules$
+^webpack\.config\.js$$
+^javascript$
