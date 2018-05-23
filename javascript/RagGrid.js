@@ -78,8 +78,12 @@ HTMLWidgets.widget({
          });
          const rowLength = data[rowHeaders[0]].length;
          const colDef = rowHeaders.map((rowHeader)=>{
-          let options =  {'headerName':rowHeader,'field':filedRowHeaderMap[rowHeader],
+         let options =  {'headerName':rowHeader,'field':filedRowHeaderMap[rowHeader],
                           enableValue:x.isNumeric[rowHeader] };
+           
+          if(x.isNumeric[rowHeader]){
+            options["cellStyle"] = { 'text-align': 'right' };
+          }
 
           let enterpriseColumnDefinitionOptions = x.licenseKey ? {
             enableRowGroup:!x.isNumeric[rowHeader],
