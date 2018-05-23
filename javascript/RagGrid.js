@@ -31,7 +31,7 @@ HTMLWidgets.widget({
 
             renderValue: function(x) {
                 const data = x.data;
-
+                const colOpts = x.colOpts;
                 let defaultGridOptions = {
                     rowSelection: 'multiple',
                     enableSorting: true,
@@ -88,6 +88,8 @@ HTMLWidgets.widget({
                             'text-align': 'right'
                         };
                     }
+                    
+                    options = colOpts[rowHeader]?Object.assign(options,colOpts[rowHeader]):options;
 
                     let enterpriseColumnDefinitionOptions = x.licenseKey ? {
                         enableRowGroup: !x.isNumeric[rowHeader],
