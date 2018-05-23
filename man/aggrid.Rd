@@ -4,8 +4,8 @@
 \alias{aggrid}
 \title{Create a HTML widget using the ag-grid library}
 \usage{
-aggrid(data, options = list(), licenseKey = NULL, width = NULL,
-  height = NULL, elementId = NULL)
+aggrid(data, options = list(), colOpts = list(), licenseKey = NULL,
+  width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{a dataobject (either a matrix or a dataframe)}
