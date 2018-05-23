@@ -12,6 +12,8 @@ aggrid(data, options = list(), colOpts = list(), licenseKey = NULL,
 
 \item{options}{a list of ag-grid grid options}
 
+\item{colOpts}{a list of ag-grid column options}
+
 \item{licenseKey}{if you wish you to use the enterprise version of ag-grid}
 
 \item{width, height}{Width/Height in pixels (optional, defaults to automatic

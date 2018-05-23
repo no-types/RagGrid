@@ -3,6 +3,7 @@
 #' This function creates a HTML widget to display matrix or a dataframe using ag-grid.
 #' @param data a dataobject (either a matrix or a dataframe)
 #' @param options a list of ag-grid grid options
+#' @param colOpts a list of ag-grid column options
 #' @param licenseKey if you wish you to use the enterprise version of ag-grid
 #' @param width,height Width/Height in pixels (optional, defaults to automatic
 #'   sizing)
