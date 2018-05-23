@@ -4,8 +4,9 @@
 \alias{aggrid}
 \title{Create a HTML widget using the ag-grid library}
 \usage{
-aggrid(data, options = list(), colOpts = list(), licenseKey = NULL,
-  width = NULL, height = NULL, elementId = NULL)
+aggrid(data, options = list(), colOpts = list(),
+  formattingOptions = list(), licenseKey = NULL, width = NULL,
+  height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{a dataobject (either a matrix or a dataframe)}
@@ -14,12 +15,16 @@ aggrid(data, options = list(), colOpts = list(), licenseKey = NULL,
 
 \item{colOpts}{a list of ag-grid column options}
 
+\item{formattingOptions}{a list of ag-grid column formatting options}
+
 \item{licenseKey}{if you wish you to use the enterprise version of ag-grid}
 
 \item{width, height}{Width/Height in pixels (optional, defaults to automatic
 sizing)}
 
 \item{elementId}{An id for the widget (a random string by default).}
+
+\item{colOpts}{a list of ag-grid column options}
 }
 \description{
 This function creates a HTML widget to display matrix or a dataframe using ag-grid.

@@ -8,3 +8,9 @@
      stylesheet:
           - aggrid.css
           - agbalham.css
+   - name: numeral
+     version: 17.1.0
+     src: htmlwidgets/lib/numeral
+     script: 
+          - numeral.min.js
+

@@ -115,6 +115,7 @@ HTMLWidgets.widget({
             renderValue: function renderValue(x) {
                 var data = x.data;
                 var colOpts = x.colOpts;
+                var formattingOptions = x.formattingOptions;
                 var defaultGridOptions = {
                     rowSelection: 'multiple',
                     enableSorting: true,
@@ -164,11 +165,21 @@ HTMLWidgets.widget({
                         'headerName': rowHeader,
                         'field': filedRowHeaderMap[rowHeader],
                         enableValue: x.isNumeric[rowHeader]
+
                     };
 
                     if (x.isNumeric[rowHeader]) {
-                        options["cellStyle"] = {
+                        options.cellStyle = {
                             'text-align': 'right'
+                        };
+                        options.valueFormatter = function (params) {
+                            if (!params.value) {
+                                return null;
+                            }
+                            if (formattingOptions[rowHeader]) {
+                                return numeral(params.value).format(formattingOptions[rowHeader]);
+                            }
+                            return params.value;
                         };
                     }
 
