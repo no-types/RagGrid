@@ -51,6 +51,10 @@ HTMLWidgets.widget({
                             }
                         });
                         sel_handle.set(selectionKeys);
+                    },
+                    enableColResize: true,
+                    onGridReady: function(params) {
+                        params.api.sizeColumnsToFit();
                     }
                 }
 

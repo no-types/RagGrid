@@ -11,20 +11,21 @@ aggrid(data, options = list(), colOpts = list(),
 \arguments{
 \item{data}{a dataobject (either a matrix or a dataframe)}
 
-\item{options}{a list of ag-grid grid options}
+\item{options}{a list of ag-grid grid options (see
+\url{https://www.ag-grid.com/javascript-grid-properties/});}
 
-\item{colOpts}{a list of ag-grid column options}
+\item{colOpts}{a list of ag-grid column options (see
+\url{https://www.ag-grid.com/javascript-grid-column-definitions/});}
 
-\item{formattingOptions}{a list of ag-grid column formatting options}
+\item{formattingOptions}{a list of ag-grid column formatting options (see
+\url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};}
 
-\item{licenseKey}{if you wish you to use the enterprise version of ag-grid}
+\item{licenseKey}{if you wish to use the enterprise version of ag-grid}
 
 \item{width, height}{Width/Height in pixels (optional, defaults to automatic
 sizing)}
 
 \item{elementId}{An id for the widget (a random string by default).}
-
-\item{colOpts}{a list of ag-grid column options}
 }
 \description{
 This function creates a HTML widget to display matrix or a dataframe using ag-grid.

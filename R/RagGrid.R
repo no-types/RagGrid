@@ -2,10 +2,13 @@
 #'
 #' This function creates a HTML widget to display matrix or a dataframe using ag-grid.
 #' @param data a dataobject (either a matrix or a dataframe)
-#' @param options a list of ag-grid grid options
-#' @param colOpts a list of ag-grid column options
-#' @param formattingOptions a list of ag-grid column formatting options
-#' @param licenseKey if you wish you to use the enterprise version of ag-grid
+#' @param options a list of ag-grid grid options (see
+#'   \url{https://www.ag-grid.com/javascript-grid-properties/});
+#' @param colOpts a list of ag-grid column options (see
+#'   \url{https://www.ag-grid.com/javascript-grid-column-definitions/});
+#' @param formattingOptions a list of ag-grid column formatting options (see
+#'   \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};
+#' @param licenseKey if you wish to use the enterprise version of ag-grid
 #' @param width,height Width/Height in pixels (optional, defaults to automatic
 #'   sizing)
 #' @param elementId An id for the widget (a random string by default).
@@ -13,7 +16,6 @@
 #' @importFrom htmltools tags htmlDependency
 #'
 #' @export
-#' @param colOpts a list of ag-grid column options
 aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(), licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
   if (crosstalk::is.SharedData(data)) {
