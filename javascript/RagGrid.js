@@ -6,22 +6,28 @@ HTMLWidgets.widget({
 
     factory: function(el, width, height) {
         let gridOptions = {};
+        let filteredValues=[];
+        let isFilterOnSelect=true;
         // TODO: define shared variables for this instance
         const sel_handle = new crosstalk.SelectionHandle();
         const filter_handle = new crosstalk.FilterHandle();
         sel_handle.on("change", function(e) {
             if (e.sender !== sel_handle) {
-                // scatter.clearBrush(); 
-                gridOptions.api.forEachNode((node) => {
-                    if (node.data && node.data.ctKey && e.value.indexOf(node.data.ctKey) != -1) {
-                        node.setSelected(true);
-                    } else {
-                        node.setSelected(false);
-                    }
-                });
-            }
 
-            console.log(e);
+                if(!isFilterOnSelect){
+                    gridOptions.api.forEachNode((node) => {
+                        if (node.data && node.data.ctKey && e.value.indexOf(node.data.ctKey) != -1) {
+                            node.setSelected(true);
+                        } else {
+                            node.setSelected(false);
+                        }
+                    });
+                }
+             else{
+                filteredValues=e.value;
+                gridOptions.api.onFilterChanged();
+             }
+            }
         });
         filter_handle.on("change", function(e) {
             // scatter.filter(e.value);
@@ -33,6 +39,7 @@ HTMLWidgets.widget({
                 const data = x.data;
                 const colOpts = x.colOpts;
                 const formattingOptions = x.formattingOptions;
+                isFilterOnSelect = x.filterOnSelect;
                 let defaultGridOptions = {
                     rowSelection: 'multiple',
                     enableSorting: true,
@@ -62,6 +69,8 @@ HTMLWidgets.widget({
                     let enterpriseGridOptions = {
                         enableStatusBar: true,
                         alwaysShowStatusBar: false, // status bar can be be fixed
+                        suppressDragLeaveHidesColumns: true,
+                        suppressMakeColumnVisibleAfterUnGroup: true
                     }
                     defaultGridOptions = Object.assign(defaultGridOptions, enterpriseGridOptions);
                 }
@@ -85,14 +94,16 @@ HTMLWidgets.widget({
                     let options = {
                         'headerName': rowHeader,
                         'field': filedRowHeaderMap[rowHeader],
-                        enableValue: x.isNumeric[rowHeader],
-
+                        enableValue: x.isNumeric[rowHeader]
                     };
 
                     if (x.isNumeric[rowHeader]) {
                         options.cellStyle = {
                             'text-align': 'right'
                         };
+                        if(x.licenseKey){
+                            options.aggFunc="sum";
+                        }
                         options.valueFormatter = (params) => {
                             if(!params.value){
                                 return null;
@@ -108,10 +119,12 @@ HTMLWidgets.widget({
 
                     let enterpriseColumnDefinitionOptions = x.licenseKey ? {
                         enableRowGroup: !x.isNumeric[rowHeader],
-                        enablePivot: !x.isNumeric[rowHeader]
+                        enablePivot: !x.isNumeric[rowHeader],
+                        rowGroup:true
                     } : {};
                     return Object.assign(options, enterpriseColumnDefinitionOptions);
                 });
+                console.log(colDef);
                 let rowDataList = [];
                 for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
                     let rowData = {};
@@ -121,6 +134,7 @@ HTMLWidgets.widget({
                     if (x.settings.crosstalk_key) {
                         rowData.ctKey = x.settings.crosstalk_key[rowIndex];
                     }
+                    // console.log(rowData);
                     rowDataList.push(rowData);
                 }
                 if (x.licenseKey) {
@@ -128,12 +142,15 @@ HTMLWidgets.widget({
                 }
                 gridOptions.columnDefs = colDef;
                 gridOptions.rowData = rowDataList;
-
+                gridOptions.isExternalFilterPresent = () => {return true;}
+                gridOptions.doesExternalFilterPass = (node) => {
+                    if(isFilterOnSelect && filteredValues.length!=0 && node.data && node.data.ctKey && filteredValues.indexOf(node.data.ctKey)==-1){
+                        return false;
+                    }
+                    return true;
+                }
                 el.setAttribute("class", "ag-theme-balham");
                 new agGrid.Grid(el, gridOptions);
-                // TODO: code to render the widget, e.g.
-                //el.innerText = x.message;
-
             },
 
             resize: function(width, height) {

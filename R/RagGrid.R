@@ -16,7 +16,7 @@
 #' @importFrom htmltools tags htmlDependency
 #'
 #' @export
-aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(), licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
+aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
   if (crosstalk::is.SharedData(data)) {
     # Using Crosstalk
@@ -48,6 +48,7 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
     isNumeric=isNumeric,
     colOpts=colOpts,
     formattingOptions=formattingOptions,
+    filterOnSelect=filterOnSelect,
     settings = list(
       crosstalk_key = key,
       crosstalk_group = group
