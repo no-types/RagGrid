@@ -2,7 +2,7 @@
 
 Here's an example of RagGrid in shiny.Use the functions RagGridOutput() and renderRagGrid().
 
-ui.R
+###ui.R
 ```r
 library(shiny)
 
@@ -18,7 +18,7 @@ shinyUI(fluidPage(
 
 ```
 
-server.R
+###server.R
 ```r
 library(shiny)
 library(RagGrid)
