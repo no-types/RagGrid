@@ -24,7 +24,7 @@ devtools::install_github('no-types/RagGrid')
 ```
 ![](assets/aggrid-basic-usage.gif)
 
-### Basic Usage
+### Tutorial
 1. [ag-Grid Table Options](tutorial/basic-configuration.md)
 2. [Table Formatting Options](tutorial/table-formatting.md)
 3. [Integration with Shiny](tutorial/shiny.md)
