@@ -130,8 +130,6 @@ HTMLWidgets.widget({
                     rowSelection: 'multiple',
                     enableSorting: true,
                     enableFilter: true,
-                    groupMultiAutoColumn: true,
-                    groupSuppressAutoColumn: true,
                     enableRangeSelection: false,
                     enableColResize: true,
                     pagination: true,
@@ -203,8 +201,7 @@ HTMLWidgets.widget({
 
                     var enterpriseColumnDefinitionOptions = x.licenseKey ? {
                         enableRowGroup: !x.isNumeric[rowHeader],
-                        enablePivot: !x.isNumeric[rowHeader],
-                        rowGroup: true
+                        enablePivot: !x.isNumeric[rowHeader]
                     } : {};
                     return Object.assign(options, enterpriseColumnDefinitionOptions);
                 });
