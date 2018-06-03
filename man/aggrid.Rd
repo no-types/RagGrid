@@ -20,6 +20,8 @@ aggrid(data, options = list(), colOpts = list(),
 \item{formattingOptions}{a list of ag-grid column formatting options (see
 \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};}
 
+\item{filterOnSelect}{specify whether filter is need to be perfromed on selecting a row item}
+
 \item{licenseKey}{if you wish to use the enterprise version of ag-grid}
 
 \item{width, height}{Width/Height in pixels (optional, defaults to automatic

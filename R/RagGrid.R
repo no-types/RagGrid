@@ -8,6 +8,7 @@
 #'   \url{https://www.ag-grid.com/javascript-grid-column-definitions/});
 #' @param formattingOptions a list of ag-grid column formatting options (see
 #'   \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};
+#' @param filterOnSelect specify whether filter is need to be perfromed on selecting a row item
 #' @param licenseKey if you wish to use the enterprise version of ag-grid
 #' @param width,height Width/Height in pixels (optional, defaults to automatic
 #'   sizing)
