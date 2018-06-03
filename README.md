@@ -22,5 +22,14 @@ devtools::install_github('no-types/RagGrid')
 
 # then try RagGrid::aggrid(iris) as a hello world example
 ```
-
 ![](assets/aggrid-basic-usage.gif)
+
+### Tutorial
+1. [ag-Grid Table Options](tutorial/basic-configuration.md)
+2. [Table Formatting Options](tutorial/table-formatting.md)
+3. [Integration with Shiny](tutorial/shiny.md)
+4. [Cross Talk Demo](tutorial/cross-talk-demo.md)
+
+
+## Licensing
+RagGrid has a dependency on ag-Grid which provides community and enterprise options. We've bundled both the versions in this package. Please review the licensing options and terms before you use this software.  [(https://www.ag-grid.com/license-pricing.php)](https://www.ag-grid.com/license-pricing.php)
