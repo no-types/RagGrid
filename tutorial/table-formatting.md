@@ -13,4 +13,5 @@ formattingOptions <- list(A='$0,0.00',C='$00.00',D ='0.00%')
 aggrid(m,formattingOptions = formattingOptions)
 
 ```
-![](/assets/table-formatting.gif)
+![](assets/table-formatting.png)
+![](/assets/table-formatting.png)
