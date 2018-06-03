@@ -2,7 +2,7 @@
 
 Crosstalk is an add-on to the htmlwidgets package. It extends htmlwidgets with a set of classes, functions, and conventions for implementing cross-widget interactions (currently, linked brushing and filtering). [(http://rstudio.github.io/crosstalk/index.html)](http://rstudio.github.io/crosstalk/index.html) 
 
-RagGrid supports cross-talk. Please see the example below.
+RagGrid supports crosstalk. Please see the example below which uses leaflet package. You can use any widget which supports crosstalk.
 
 ```r
 library(crosstalk)
