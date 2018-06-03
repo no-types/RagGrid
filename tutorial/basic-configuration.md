@@ -29,6 +29,19 @@ aggrid(iris,options=list(paginationAutoPageSize = FALSE,paginationPageSize=50))
 aggrid(iris,options=list(paginationAutoPageSize = FALSE,paginationPageSize=50,multiSortKey='ctrl'))
 ```
 
+## Enterprise mode
+
+Enterprise mode will be enabled by passing the ```licenseKey``` option. Enterprise provides a lot of features like row grouping, pivoting, status bar etc.,
+
+```r
+aggrid(iris,licenseKey=<YOUR LICENSE KEY>)
+```
+
+### Enterpise Demo
+![](assets/enterprise-options.gif)
+![](/assets/enterprise-options.gif)
+
+
 ### Default Grid options - Enterprise edition ( + Community Edition )
 
 | Property        | Value           |
