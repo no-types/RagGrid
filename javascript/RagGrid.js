@@ -124,7 +124,6 @@ HTMLWidgets.widget({
                     } : {};
                     return Object.assign(options, enterpriseColumnDefinitionOptions);
                 });
-                console.log(colDef);
                 let rowDataList = [];
                 for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
                     let rowData = {};
@@ -142,13 +141,15 @@ HTMLWidgets.widget({
                 }
                 gridOptions.columnDefs = colDef;
                 gridOptions.rowData = rowDataList;
-                gridOptions.isExternalFilterPresent = () => {return true;}
+                gridOptions.isExternalFilterPresent = () => {return true;};
                 gridOptions.doesExternalFilterPass = (node) => {
-                    if(isFilterOnSelect && filteredValues.length!=0 && node.data && node.data.ctKey && filteredValues.indexOf(node.data.ctKey)==-1){
+                    if(isFilterOnSelect && filteredValues.length!==0 && node.data && node.data.ctKey && filteredValues.indexOf(node.data.ctKey)===-1){
                         return false;
                     }
-                    return true;
-                }
+                    else{
+                        return true;
+                    }
+                };
                 el.setAttribute("class", "ag-theme-balham");
                 new agGrid.Grid(el, gridOptions);
             },

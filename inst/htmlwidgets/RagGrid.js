@@ -208,7 +208,6 @@ HTMLWidgets.widget({
                     } : {};
                     return Object.assign(options, enterpriseColumnDefinitionOptions);
                 });
-                console.log(colDef);
                 var rowDataList = [];
 
                 var _loop = function _loop(rowIndex) {
@@ -235,10 +234,11 @@ HTMLWidgets.widget({
                     return true;
                 };
                 gridOptions.doesExternalFilterPass = function (node) {
-                    if (isFilterOnSelect && filteredValues.length != 0 && node.data && node.data.ctKey && filteredValues.indexOf(node.data.ctKey) == -1) {
+                    if (isFilterOnSelect && filteredValues.length !== 0 && node.data && node.data.ctKey && filteredValues.indexOf(node.data.ctKey) === -1) {
                         return false;
+                    } else {
+                        return true;
                     }
-                    return true;
                 };
                 el.setAttribute("class", "ag-theme-balham");
                 new agGrid.Grid(el, gridOptions);
