@@ -32,4 +32,4 @@ devtools::install_github('no-types/RagGrid')
 
 
 ## Licensing
-RagGrid has a dependency on ag-Grid which provides community and enterprise options. We've bundled both the versions in this package. Please review the licensing options and terms before you use this software.  [![Licensing](https://www.ag-grid.com/license-pricing.php)](https://www.ag-grid.com/license-pricing.php)
+RagGrid has a dependency on ag-Grid which provides community and enterprise options. We've bundled both the versions in this package. Please review the licensing options and terms before you use this software.  [(https://www.ag-grid.com/license-pricing.php)](https://www.ag-grid.com/license-pricing.php)
