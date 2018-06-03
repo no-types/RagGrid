@@ -1,8 +1,9 @@
 # R ag-Grid
 
 [![Build Status](https://travis-ci.com/no-types/RagGrid.svg?branch=master)](https://travis-ci.com/no-types/RagGrid)
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-[![Coverage Status](https://coveralls.io/repos/github/no-types/RagGrid/badge.svg)](https://coveralls.io/github/no-types/RagGrid)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![GitHub issues](https://img.shields.io/github/issues-raw/no-types/RagGrid.svg)](https://github.com/no-types/RagGrid/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/no-types/RagGrid.svg)](https://github.com/no-types/RagGrid/issues)
 
 R interface to ag-grid.
 
@@ -25,7 +26,7 @@ devtools::install_github('no-types/RagGrid')
 ![](assets/aggrid-basic-usage.gif)
 
 ### Tutorial
-1. [ag-Grid Table Options](tutorial/basic-configuration.md)
+1. [Grid Options](tutorial/basic-configuration.md)
 2. [Table Formatting Options](tutorial/table-formatting.md)
 3. [Integration with Shiny](tutorial/shiny.md)
 4. [Cross Talk Demo](tutorial/cross-talk-demo.md)
