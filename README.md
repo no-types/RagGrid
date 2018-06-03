@@ -22,11 +22,10 @@ devtools::install_github('no-types/RagGrid')
 
 # then try RagGrid::aggrid(iris) as a hello world example
 ```
+![](assets/aggrid-basic-usage.gif)
 
 ### Basic Usage
 1. [ag-Grid Table Options](tutorial/basic-configuration.md)
 2. [Table Formatting Options](tutorial/table-formatting.md)
 3. [Integration with Shiny](tutorial/shiny.md)
 4. [Cross Talk Demo](tutorial/cross-talk-demo.md)
-
-![](assets/aggrid-basic-usage.gif)
