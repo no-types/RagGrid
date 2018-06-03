@@ -29,6 +29,33 @@ aggrid(iris,options=list(paginationAutoPageSize = FALSE,paginationPageSize=50))
 aggrid(iris,options=list(paginationAutoPageSize = FALSE,paginationPageSize=50,multiSortKey='ctrl'))
 ```
 
+### Column Definition options
+Column definition options can be passed to ```aggrid()``` using the ```colOpts``` arguments. 
+
+Please go over the documentation [(https://www.ag-grid.com/javascript-grid-column-properties/)](https://www.ag-grid.com/javascript-grid-column-properties/)  to configure the column properties.
+
+Here's an example of how you can use it.
+
+```r
+library(RagGrid)
+# Rename the column header name to "Sepal Length" for example
+colOpts = list(Sepal.Length=list(headerName='Sepal Length'))
+aggrid(iris,options=list(pagination = FALSE),colOpts =colOpts )
+
+#You can pin a column by using the pinned property
+colOpts = list(Sepal.Length=list(headerName='Sepal Length',pinned='left'))
+aggrid(iris,options=list(pagination = FALSE),colOpts =colOpts )
+
+#Sort by a column Sepal.Length 'asc'
+colOpts = list(Sepal.Length=list(sort='asc'))
+aggrid(iris,options=list(pagination = FALSE),colOpts =colOpts )
+
+
+#Multiple sort (Sort by Sepal.Length 'asc' followed by Sepal.Width 'desc' )
+colOpts = list(Sepal.Length=list(sort='asc'),Sepal.Width=list(sort='desc'))
+aggrid(iris,options=list(pagination = FALSE),colOpts =colOpts )
+```
+
 ## Enterprise mode
 
 Enterprise mode will be enabled by passing the ```licenseKey``` option. Enterprise provides a lot of features like row grouping, pivoting, status bar etc.,
