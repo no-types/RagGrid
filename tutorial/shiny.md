@@ -1,6 +1,6 @@
 ## RagGrid in Shiny
 
-Here's an example of RagGrid in shiny.Use the functions RagGridOutput() and renderRagGrid().
+Here's an example of RagGrid in shiny.Use the functions ```RagGridOutput()``` and ```renderRagGrid()```.
 
 #### ui.R
 ```r
