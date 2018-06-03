@@ -1,6 +1,6 @@
 ## Format Columns
 
-Here's an example of how you can format the table columns as currency , percentages  or any options from here.
+Here's an example of how you can format the table columns as currency , percentages  or any options supported by numeraljs.
 
 Please check out [numeraljs](http://numeraljs.com/) for all the options that can be used.
 
@@ -13,3 +13,4 @@ formattingOptions <- list(A='$0,0.00',C='$00.00',D ='0.00%')
 aggrid(m,formattingOptions = formattingOptions)
 
 ```
+![](assets/table-formatting.gif)
