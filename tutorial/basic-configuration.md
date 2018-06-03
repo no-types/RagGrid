@@ -1,4 +1,8 @@
+#RagGrid Configuration
 
+Grid options can be passed to ```aggrid()``` using the ```options``` arguments. The package passes the below properties as default options to aggrid(). 
+
+Please read through the aggrid documentation [(https://www.ag-grid.com/javascript-grid-properties/)] (https://www.ag-grid.com/javascript-grid-properties/) to configure the grid's properties.
 
 Default Grid options used with the community edition
 
