@@ -8,6 +8,7 @@
 #'   \url{https://www.ag-grid.com/javascript-grid-column-definitions/});
 #' @param formattingOptions a list of ag-grid column formatting options (see
 #'   \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};
+#' @param filterOnSelect specify whether filter is need to be perfromed on selecting a row item
 #' @param licenseKey if you wish to use the enterprise version of ag-grid
 #' @param width,height Width/Height in pixels (optional, defaults to automatic
 #'   sizing)
@@ -16,7 +17,7 @@
 #' @importFrom htmltools tags htmlDependency
 #'
 #' @export
-aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(), licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
+aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
   if (crosstalk::is.SharedData(data)) {
     # Using Crosstalk
@@ -48,6 +49,7 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
     isNumeric=isNumeric,
     colOpts=colOpts,
     formattingOptions=formattingOptions,
+    filterOnSelect=filterOnSelect,
     settings = list(
       crosstalk_key = key,
       crosstalk_group = group
