@@ -58,7 +58,7 @@ aggrid(iris,options=list(pagination = FALSE),colOpts =colOpts )
 
 ## Enterprise mode
 
-Enterprise mode will be enabled by passing the ```licenseKey``` option. Enterprise provides a lot of features like row grouping, pivoting, status bar etc.,
+Enterprise mode will be enabled by passing the ```licenseKey``` option. Enterprise provides a lot of features like row grouping, pivoting, status bar.
 
 ```r
 aggrid(iris,licenseKey=<YOUR LICENSE KEY>)
