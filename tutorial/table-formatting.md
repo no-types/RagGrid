@@ -1,7 +1,8 @@
 ## Format Columns
 
 Here's an example of how you can format the table columns as currency , percentages  or any options from here.
-Please check out  [(http://numeraljs.com/)](http://numeraljs.com/) for all the options that can be used.
+
+Please check out [numeraljs](http://numeraljs.com/) for all the options that can be used.
 
 ```r
 library(RagGrid)
