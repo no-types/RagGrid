@@ -77,6 +77,3 @@ aggrid(iris,licenseKey=<YOUR LICENSE KEY>)
 | alwaysShowStatusBar      | false      |
 | suppressDragLeaveHidesColumns | true      |
 | suppressMakeColumnVisibleAfterUnGroup | true      |
-| enableColResize | true      |
-| pagination | true      |
-| paginationAutoPageSize | true      |
