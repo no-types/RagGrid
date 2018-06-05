@@ -4,12 +4,10 @@ const path = require('path');
 module.exports = {
   entry: [
     './javascript/RagGrid.js',"babel-polyfill"],
-  mode:'development',
   optimization: {
     // We do not want to minimize our code.
-    minimize: false
+    minimize: true
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {

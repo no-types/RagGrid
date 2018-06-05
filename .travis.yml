@@ -6,7 +6,9 @@ cache:
   packages: yes
 
 r:
- - release
+  - oldrel
+  - release
+  - devel
 
 r_github_packages:
   - jimhester/covr
