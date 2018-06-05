@@ -6,6 +6,8 @@
 #'   \url{https://www.ag-grid.com/javascript-grid-properties/});
 #' @param colOpts a list of ag-grid column options (see
 #'   \url{https://www.ag-grid.com/javascript-grid-column-definitions/});
+#' @param theme a theme class name that need to be applied for grid (see
+#'   \url{https://www.ag-grid.com/javascript-grid-styling//});
 #' @param formattingOptions a list of ag-grid column formatting options (see
 #'   \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};
 #' @param filterOnSelect specify whether filter is need to be perfromed on selecting a row item
@@ -17,7 +19,7 @@
 #' @importFrom htmltools tags htmlDependency
 #'
 #' @export
-aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
+aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),theme="ag-theme-balham",filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
   if (crosstalk::is.SharedData(data)) {
     # Using Crosstalk
@@ -41,6 +43,25 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
 
   isNumeric = vapply(data, is.numeric, logical(1))
   isNumeric = lapply(split(isNumeric, names(isNumeric)), unname)
+  
+  deps = list()
+  if(!is.null(licenseKey))
+    deps = c(deps,list(getDeps("aggrid-enterprice","17.1.1")))
+
+  deps = c(deps, crosstalk::crosstalkLibs())
+
+  #including css
+  css_deps <- getDeps("css","17.1.1")
+  css_file_name <- paste(theme,".css",sep="")
+  if(css_file_name %in%  css_deps[["stylesheet"]]){
+    css_deps[["stylesheet"]] <- c(css_file_name)
+  }
+  else{
+    theme = "ag-theme-balham";
+    css_deps[["stylesheet"]] <- c("ag-theme-balham.css")
+  }
+  deps = c(deps, list(css_deps))
+
   # forward options using x
   x = list(
     data = data,
@@ -49,17 +70,14 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
     isNumeric=isNumeric,
     colOpts=colOpts,
     formattingOptions=formattingOptions,
+    theme=theme,
     filterOnSelect=filterOnSelect,
     settings = list(
       crosstalk_key = key,
       crosstalk_group = group
     )
   )
-  deps = list()
-  if(!is.null(licenseKey))
-    deps = c(deps,list(getDeps("aggrid-enterprice","17.1.1")))
 
-  deps = c(deps, crosstalk::crosstalkLibs())
   # create widget
   htmlwidgets::createWidget(
     name = 'RagGrid',

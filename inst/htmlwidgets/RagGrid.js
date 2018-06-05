@@ -237,7 +237,7 @@ HTMLWidgets.widget({
                         return true;
                     }
                 };
-                el.setAttribute("class", "ag-theme-balham");
+                el.setAttribute("class", x.theme || "ag-theme-balham");
                 new agGrid.Grid(el, gridOptions);
             },
 

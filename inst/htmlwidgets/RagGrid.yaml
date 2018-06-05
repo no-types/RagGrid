@@ -3,14 +3,14 @@
    - name: aggrid
      version: 17.1.0
      src: htmlwidgets/lib/aggrid
-     script: 
+     script:
           - aggrid.min.js
      stylesheet:
           - aggrid.css
-          - agbalham.css
+          - compiled-icons.css
    - name: numeral
      version: 17.1.0
      src: htmlwidgets/lib/numeral
-     script: 
+     script:
           - numeral.min.js
 
