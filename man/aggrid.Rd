@@ -5,8 +5,9 @@
 \title{Create a HTML widget using the ag-grid library}
 \usage{
 aggrid(data, options = list(), colOpts = list(),
-  formattingOptions = list(), filterOnSelect = TRUE, licenseKey = NULL,
-  width = NULL, height = NULL, elementId = NULL)
+  formattingOptions = list(), theme = "ag-theme-balham",
+  filterOnSelect = TRUE, licenseKey = NULL, width = NULL, height = NULL,
+  elementId = NULL)
 }
 \arguments{
 \item{data}{a dataobject (either a matrix or a dataframe)}
@@ -19,6 +20,9 @@ aggrid(data, options = list(), colOpts = list(),
 
 \item{formattingOptions}{a list of ag-grid column formatting options (see
 \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};}
+
+\item{theme}{a theme class name that need to be applied for grid (see
+\url{https://www.ag-grid.com/javascript-grid-styling//});}
 
 \item{filterOnSelect}{specify whether filter is need to be perfromed on selecting a row item}
 
