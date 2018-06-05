@@ -36,3 +36,8 @@ sizing)}
 \description{
 This function creates a HTML widget to display matrix or a dataframe using ag-grid.
 }
+\examples{
+
+aggrid(iris)
+
+}

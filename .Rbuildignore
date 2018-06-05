@@ -19,3 +19,5 @@
 ^webpack\.config\.js$$
 ^javascript$
 ^tutorial$
+^assets$
+assets/aggrid-basic-usage.gif

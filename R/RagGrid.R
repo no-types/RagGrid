@@ -17,7 +17,11 @@
 #' @param elementId An id for the widget (a random string by default).
 #' @import htmlwidgets
 #' @importFrom htmltools tags htmlDependency
+#' @importFrom stats setNames
+#' @examples
 #'
+#' aggrid(iris)
+#' 
 #' @export
 aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),theme="ag-theme-balham",filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
