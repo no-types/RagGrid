@@ -23,7 +23,7 @@ devtools::install_github('no-types/RagGrid')
 
 # then try RagGrid::aggrid(iris) as a hello world example
 ```
-![](assets/aggrid-basic-usage.gif)
+![](https://github.com/no-types/RagGrid/raw/master/assets/aggrid-basic-usage.gif)
 
 ### Tutorial
 1. [Grid Options](tutorial/basic-configuration.md)
