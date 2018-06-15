@@ -69,7 +69,8 @@ HTMLWidgets.widget({
                         enableStatusBar: true,
                         alwaysShowStatusBar: false, // status bar can be be fixed
                         suppressDragLeaveHidesColumns: true,
-                        suppressMakeColumnVisibleAfterUnGroup: true
+                        suppressMakeColumnVisibleAfterUnGroup: true,
+                        rowGroupPanelShow: "always"
                     }
                     defaultGridOptions = Object.assign(defaultGridOptions, enterpriseGridOptions);
                 }

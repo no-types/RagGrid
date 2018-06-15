@@ -1,7 +1,7 @@
 Package: RagGrid
 Type: Package
 Title: A Wrapper of the 'JavaScript' Library 'agGrid'
-Version: 0.1.1
+Version: 0.2.0
 Authors@R: c(
     person("Srikkanth", "M",email = "srikkanth18@gmail.com",role = c("aut", "cre")),
     person("Praveen", "N", email = "npraveen@live.in", role = c("aut", "ctb"))
