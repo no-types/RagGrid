@@ -48,6 +48,7 @@ HTMLWidgets.widget({
                     enableColResize: true,
                     pagination: true,
                     paginationAutoPageSize: true,
+                    gridAutoHeight:false,
                     onRowClicked: event => {
                         let selectionKeys = [];
                         gridOptions.api.getSelectedNodes().forEach(node => {
@@ -147,6 +148,8 @@ HTMLWidgets.widget({
                         return true;
                     }
                 };
+                //el.removeAttribute("style");
+                //el.style.height = '';
                 el.setAttribute("class", x.theme || "ag-theme-balham");
                 new agGrid.Grid(el, gridOptions);
             },

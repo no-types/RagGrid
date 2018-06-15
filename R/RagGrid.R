@@ -50,12 +50,12 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
   
   deps = list()
   if(!is.null(licenseKey))
-    deps = c(deps,list(getDeps("aggrid-enterprice","17.1.1")))
+    deps = c(deps,list(getDeps("aggrid-enterprise","18.0.1")))
 
   deps = c(deps, crosstalk::crosstalkLibs())
 
   #including css
-  css_deps <- getDeps("css","17.1.1")
+  css_deps <- getDeps("css","18.0.1")
   css_file_name <- paste(theme,".css",sep="")
   if(css_file_name %in%  css_deps[["stylesheet"]]){
     css_deps[["stylesheet"]] <- c(css_file_name)
