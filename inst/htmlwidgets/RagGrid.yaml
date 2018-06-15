@@ -1,15 +1,12 @@
 # (uncomment to add a dependency)
   dependencies:
    - name: aggrid
-     version: 17.1.0
+     version: 18.0.1
      src: htmlwidgets/lib/aggrid
      script:
-          - aggrid.min.js
-     stylesheet:
-          - aggrid.css
-          - compiled-icons.css
+          - ag-grid.min.js
    - name: numeral
-     version: 17.1.0
+     version: 2.0.6
      src: htmlwidgets/lib/numeral
      script:
           - numeral.min.js
