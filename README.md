@@ -2,6 +2,7 @@
 
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/RagGrid?color=brightgreen)](https://cran.r-project.org/package=RagGrid)
+[![Rdoc](http://www.rdocumentation.org/badges/version/RagGrid)](http://www.rdocumentation.org/packages/RagGrid)
 [![Build Status](https://travis-ci.com/no-types/RagGrid.svg?branch=master)](https://travis-ci.com/no-types/RagGrid)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![GitHub issues](https://img.shields.io/github/issues-raw/no-types/RagGrid.svg)](https://github.com/no-types/RagGrid/issues)
