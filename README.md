@@ -28,13 +28,8 @@ devtools::install_github('no-types/RagGrid')
 ```
 ![](https://github.com/no-types/RagGrid/raw/master/assets/aggrid-basic-usage.gif)
 
-### Tutorial
-1. [Grid Options](tutorial/basic-configuration.md)
-2. [Table Formatting Options](tutorial/table-formatting.md)
-3. [Integration with Shiny](tutorial/shiny.md)
-4. [Cross Talk Demo](tutorial/cross-talk-demo.md)
-5. [Theme](tutorial/theme.md)
-
+### Documentation
+Please check out the full documentation at [(http://raggrid.netlify.com/)](http://raggrid.netlify.com/)
 
 ## Licensing
 RagGrid has a dependency on ag-grid v17.1.1 which provides community and enterprise options. We've bundled both the versions in this package. Please review the licensing options and terms before you use this software.  [(https://www.ag-grid.com/license-pricing.php)](https://www.ag-grid.com/license-pricing.php)
