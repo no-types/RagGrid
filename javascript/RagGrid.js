@@ -64,6 +64,10 @@ HTMLWidgets.widget({
                     }
                 }
 
+                if(x.rowHeaders){ // Copy the rownames header
+                    x.data['rowHeaders'] = x.rowHeaders;
+                }
+
                 if (x.licenseKey) {
                     let enterpriseGridOptions = {
                         enableStatusBar: true,
@@ -85,15 +89,15 @@ HTMLWidgets.widget({
                 if (rowHeaders.length == 0) {
                     return;
                 }
-                let filedRowHeaderMap = {};
+                let fieldRowHeaderMap = {};
                 rowHeaders.forEach((rowHeader) => {
-                    filedRowHeaderMap[rowHeader] = rowHeader.replace(".", "_");
+                    fieldRowHeaderMap[rowHeader] = rowHeader.replace(".", "_");
                 });
                 const rowLength = data[rowHeaders[0]].length;
                 const colDef = rowHeaders.map((rowHeader) => {
                     let options = {
                         'headerName': rowHeader,
-                        'field': filedRowHeaderMap[rowHeader],
+                        'field': fieldRowHeaderMap[rowHeader],
                         enableValue: x.isNumeric[rowHeader]
                     };
 
@@ -127,7 +131,7 @@ HTMLWidgets.widget({
                 for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
                     let rowData = {};
                     rowHeaders.forEach((rowHeader) => {
-                        rowData[filedRowHeaderMap[rowHeader]] = data[rowHeader][rowIndex];
+                        rowData[fieldRowHeaderMap[rowHeader]] = data[rowHeader][rowIndex];
                     });
                     if (x.settings.crosstalk_key) {
                         rowData.ctKey = x.settings.crosstalk_key[rowIndex];
@@ -138,6 +142,15 @@ HTMLWidgets.widget({
                 if (x.licenseKey) {
                     agGrid.LicenseManager.setLicenseKey(x.licenseKey);
                 }
+
+                if(x.rowHeaders){
+                    let rowHeaderColumnDef =colDef.pop();
+                    rowHeaderColumnDef.headerName = ""; // There is no header name to be added.
+                    rowHeaderColumnDef.enablePivot = false;
+                    rowHeaderColumnDef.enableRowGroup  = false;
+                    colDef.unshift(rowHeaderColumnDef);
+                }
+
                 gridOptions.columnDefs = colDef;
                 gridOptions.rowData = rowDataList;
                 gridOptions.isExternalFilterPresent = () => {return true;};
