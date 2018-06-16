@@ -35,6 +35,7 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
     key <- NULL
     group <- NULL
   }
+  rowHeaders = rownames(data)
 
   if (is.data.frame(data)) {
     data = as.data.frame(data)
@@ -66,6 +67,8 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
   }
   deps = c(deps, list(css_deps))
 
+  
+
   # forward options using x
   x = list(
     data = data,
@@ -79,7 +82,8 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
     settings = list(
       crosstalk_key = key,
       crosstalk_group = group
-    )
+    ),
+    rowHeaders = rowHeaders
   )
 
   # create widget
