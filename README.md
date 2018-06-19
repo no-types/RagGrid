@@ -1,5 +1,5 @@
 # R ag-Grid
-
+![](https://github.com/no-types/RagGrid/raw/master/raggrid.png)
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/RagGrid?color=brightgreen)](https://cran.r-project.org/package=RagGrid)
 [![Rdoc](http://www.rdocumentation.org/badges/version/RagGrid)](http://www.rdocumentation.org/packages/RagGrid)
