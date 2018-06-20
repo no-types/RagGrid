@@ -36,6 +36,12 @@ HTMLWidgets.widget({
         return {
 
             renderValue: function(x) {
+                if(document.location.search.indexOf("viewer_pane=1")!=-1 && navigator.platform==="Win32")
+                {
+                    el.innerHTML="Native RStudio Viewer Pane does not support aggrid. Open the <a href='"+document.location.href.replace("viewer_pane=1","")+"'>link</a> in other browser."
+                    return;
+                }
+                
                 const data = x.data;
                 const colOpts = x.colOpts;
                 const formattingOptions = x.formattingOptions;
