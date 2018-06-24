@@ -3,8 +3,9 @@ export class SparkLineCellRenderer{
 
     init(params){
         this.element=$("<div style='width:100%;height:100%'></div>");
-        if(!params.value)
+        if(!params.value){
             return;
+        }
         let value =params.value.slice();
         let chartOptions =  value.splice(0,1)[0];
         setTimeout( () => {

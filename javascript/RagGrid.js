@@ -1,6 +1,6 @@
-import {SparkLineUtils} from './SparkLineUtils';
-import { AgGridUtil } from './AgGridUtil';
-import { ErrorMessageUtils } from './ErrorMessageUtils';
+import {SparkLineUtils} from "./SparkLineUtils";
+import { AgGridUtil } from "./AgGridUtil";
+import { ErrorMessageUtils } from "./ErrorMessageUtils";
 HTMLWidgets.widget({
 
     name: 'RagGrid',
@@ -37,8 +37,9 @@ HTMLWidgets.widget({
         return {
 
             renderValue: function(x) {                
-                if(ErrorMessageUtils.checkWindowsViewerPane(el))
+                if(ErrorMessageUtils.checkWindowsViewerPane(el)){
                     return;
+                }
                 const licenseKey = x.licenseKey;
                 const rowHeight = SparkLineUtils.transformData(x.data,x.sparkLineOptions);
                 isFilterOnSelect = x.filterOnSelect;

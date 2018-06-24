@@ -1,10 +1,9 @@
-import { SparkLineCellRenderer } from "./SparkLineCellRenderer";
 import { FormattingUtils } from "./FormattingUtils";
 import { SparkLineUtils } from "./SparkLineUtils";
 export class AgGridUtil{
-    static getDefaultGridOptions(rowHeight,sel_handle,licenseKey){
+    static getDefaultGridOptions(rowHeight,selectionHandler,licenseKey){
         let defaultGridOptions = {
-            rowSelection: 'multiple',
+            rowSelection: "multiple",
             enableSorting: true,
             enableFilter: true,
             enableRangeSelection: false,
@@ -12,22 +11,21 @@ export class AgGridUtil{
             pagination: true,
             paginationAutoPageSize: true,
             gridAutoHeight:false,
-            rowHeight : rowHeight >0 ? rowHeight : undefined,
+            rowHeight : rowHeight >0 ? rowHeight : null,
             onRowClicked: ({api}) => {
                 let selectionKeys = [];
-                api.getSelectedNodes().forEach(node => {
+                api.getSelectedNodes().forEach((node) => {
                     if (node.data && node.data.ctKey) {
                         selectionKeys.push(node.data.ctKey);
                     }
                 });
-                sel_handle.set(selectionKeys);
+                selectionHandler.set(selectionKeys);
             },
-            enableColResize: true,
-            onGridReady: function({api}) {
+            onGridReady: ({api}) => {
                     api.sizeColumnsToFit(); 
             }
-        }
-        return Object.assign(defaultGridOptions,AgGridUtil.getEnterpriseOptions(licenseKey))
+        };
+        return Object.assign(defaultGridOptions,AgGridUtil.getEnterpriseOptions(licenseKey));
     }
     static getEnterpriseOptions(licenseKey){
         if(licenseKey)
@@ -40,7 +38,7 @@ export class AgGridUtil{
         };
         return {};
     }
-    static getRowData(data,crosstalk_key){
+    static getRowData(data,crosstalkKey){
         const columnHeaders = Object.keys(data);
         const rowLength = data[columnHeaders[0]].length;
         let rowDataList = [];
@@ -50,8 +48,8 @@ export class AgGridUtil{
                         let fieldName = AgGridUtil.escape(columnHeader);
                         rowData[fieldName] = data[columnHeader][rowIndex];
                     });
-                    if (crosstalk_key) {
-                        rowData.ctKey = crosstalk_key[rowIndex];
+                    if (crosstalkKey) {
+                        rowData.ctKey = crosstalkKey[rowIndex];
                     }
                     rowDataList.push(rowData);
                 }
@@ -64,8 +62,8 @@ export class AgGridUtil{
         let colDef = columnHeaders.map((columnHeader) => {
             const isColNumeric = isNumeric[columnHeader];
             let options = {
-                'headerName': columnHeader,
-                'field': AgGridUtil.escape(columnHeader),
+                headerName: columnHeader,
+                field: AgGridUtil.escape(columnHeader),
                 enableValue: isColNumeric,
             };
             let sparkLineColDefOptions = SparkLineUtils.getSparkLineColDefOptions(sparkLineOptions,columnHeader);
@@ -88,13 +86,13 @@ export class AgGridUtil{
     }
 
     static getEnterpriseColDefOptions(isNumeric,licenseKey){
-        if(licenseKey)
+        if(licenseKey){
             return {
                 enableRowGroup: !isNumeric,
                 enablePivot: !isNumeric,
                 aggFunc : isNumeric ? "sum" : undefined
             }
-        
+        }
         return {};
     }
 
@@ -104,13 +102,14 @@ export class AgGridUtil{
     }
 
     static getNumericOptions(isNumeric,format){
-        if(isNumeric)
+        if(isNumeric){
               return {
-                cellStyle: {'text-align': 'right'},
+                cellStyle: {"text-align": "right"},
                 valueFormatter : (params) => {
                    return FormattingUtils.formatValue(params.value,format);
                 }
             }
+        }
         return {};
     }
 }
