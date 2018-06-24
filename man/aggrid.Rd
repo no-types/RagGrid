@@ -5,9 +5,9 @@
 \title{Create a HTML widget using the ag-grid library}
 \usage{
 aggrid(data, options = list(), colOpts = list(),
-  formattingOptions = list(), theme = "ag-theme-balham",
-  filterOnSelect = TRUE, licenseKey = NULL, width = NULL, height = NULL,
-  elementId = NULL)
+  formattingOptions = list(), sparkLineOptions = list(),
+  theme = "ag-theme-balham", filterOnSelect = TRUE, licenseKey = NULL,
+  width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{a dataobject (either a matrix or a dataframe)}
@@ -20,6 +20,8 @@ aggrid(data, options = list(), colOpts = list(),
 
 \item{formattingOptions}{a list of ag-grid column formatting options (see
 \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};}
+
+\item{sparkLineOptions}{options for rendering sparkline in the table}
 
 \item{theme}{a theme class name that need to be applied for grid (see
 \url{https://www.ag-grid.com/javascript-grid-styling//});}
