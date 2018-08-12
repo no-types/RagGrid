@@ -12,6 +12,7 @@
 #'   \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};
 #' @param filterOnSelect specify whether filter is need to be perfromed on selecting a row item
 #' @param licenseKey if you wish to use the enterprise version of ag-grid
+#' @param sparkLineOptions options for rendering sparkline in the table
 #' @param width,height Width/Height in pixels (optional, defaults to automatic
 #'   sizing)
 #' @param elementId An id for the widget (a random string by default).
@@ -23,7 +24,7 @@
 #' aggrid(iris)
 #' 
 #' @export
-aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),theme="ag-theme-balham",filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
+aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),sparkLineOptions=list(),theme="ag-theme-balham",filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
   if (crosstalk::is.SharedData(data)) {
     # Using Crosstalk
@@ -78,6 +79,7 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
     colOpts=colOpts,
     formattingOptions=formattingOptions,
     theme=theme,
+    sparkLineOptions=sparkLineOptions,
     filterOnSelect=filterOnSelect,
     settings = list(
       crosstalk_key = key,
