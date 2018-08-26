@@ -65,6 +65,7 @@ export class AgGridUtil{
                 headerName: columnHeader,
                 field: AgGridUtil.escape(columnHeader),
                 enableValue: isColNumeric,
+                filter : isColNumeric ? "agNumberColumnFilter" : "agTextColumnFilter"
             };
             let sparkLineColDefOptions = SparkLineUtils.getSparkLineColDefOptions(sparkLineOptions,columnHeader);
             let numericOptions = AgGridUtil.getNumericOptions(isColNumeric,formattingOptions[columnHeader]);
