@@ -1,12 +1,11 @@
-import { createRowHeightBtn } from "./RowHeightBtn";
-import { createBtn, getIcon } from "./Utils";
+import { createButton, getIcon } from "./Utils";
 export class CommandContainer {
   constructor(gridOptions) {
     this.gridOptions = gridOptions;
   }
 
-   createRowHeightBtn(){
-    let rowHeightBtn = createBtn({
+   createRowHeightButton(){
+    let rowHeightButton = createButton({
       icon: "rowHeight.short",
       className: "row-height-btn"
     });
@@ -48,7 +47,6 @@ export class CommandContainer {
       optionElement.appendChild(optionIcon);
       optionElement.appendChild(optionText);
       optionElement.addEventListener("click", () => {
-          debugger;
           this.gridOptions.getRowHeight = () =>{
             return option.height;
         }
@@ -56,15 +54,15 @@ export class CommandContainer {
       });
       options.appendChild(optionElement);
     });
-    rowHeightBtn.appendChild(options);
-    return rowHeightBtn;
+    rowHeightButton.appendChild(options);
+    return rowHeightButton;
   };
 
   getGui() {
     let commandContainer = document.createElement("div");
     commandContainer.setAttribute("class", "command-container");
-    let rowHeightBtn = this.createRowHeightBtn();
-    commandContainer.appendChild(rowHeightBtn);
+    let rowHeightButton = this.createRowHeightButton();
+    commandContainer.appendChild(rowHeightButton);
     return commandContainer;
   };
 }
