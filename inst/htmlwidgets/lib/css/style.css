@@ -1,16 +1,45 @@
-.command-container {
-  background: black;
+.command-container{
+  background: white;
+  border: 1px solid lightgray;
   height: 35px;
 }
-.table-container {
+.table-container{
   height: calc(100% - 35px);
 }
 
 .command-container{
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .row-height-btn{
-    width: 50px
-    
+  width: 50px
+}
+
+
+.btn-option-item{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  display: flex;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+.btn-option-txt{
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.2rem;
+}
+
+.icon.btn-option-icon {
+  display: flex;
+}
+
+.btn-options {
+  z-index: 8;
+  transform: translate(0px, 0px);
+  position: absolute;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px hsla(0,0%,0%,0.1);
 }
