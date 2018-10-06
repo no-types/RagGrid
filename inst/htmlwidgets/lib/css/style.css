@@ -1,0 +1,16 @@
+.command-container {
+  background: black;
+  height: 35px;
+}
+.table-container {
+  height: calc(100% - 35px);
+}
+
+.command-container{
+    display: flex;
+    align-items: center;
+}
+.row-height-btn{
+    width: 50px
+    
+}

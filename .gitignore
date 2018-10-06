@@ -37,3 +37,4 @@ rsconnect/
 .Rproj.user
 
 node_modules/
+build/

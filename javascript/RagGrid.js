@@ -1,6 +1,8 @@
 import {SparkLineUtils} from "./SparkLineUtils";
 import { AgGridUtil } from "./AgGridUtil";
 import { ErrorMessageUtils } from "./ErrorMessageUtils";
+import { CommandContainer } from "./CommandContainer";
+
 HTMLWidgets.widget({
 
     name: 'RagGrid',
@@ -8,8 +10,8 @@ HTMLWidgets.widget({
     type: 'output',
 
     factory: function(el, width, height) {
-        let gridOptions = {};
-        let filteredValues=[];
+       let gridOptions = {};
+        let filteredValues=[]; 
         let isFilterOnSelect=true;
         // TODO: define shared variables for this instance
         const sel_handle = new crosstalk.SelectionHandle();
@@ -70,9 +72,13 @@ HTMLWidgets.widget({
                         return true;
                     }
                 };
-
-                el.setAttribute("class", x.theme || "ag-theme-balham");
-                new agGrid.Grid(el, gridOptions);
+                let commandContainer =  new CommandContainer(gridOptions);
+                let tableContainer = document.createElement("div");
+                tableContainer.setAttribute("class","table-container");
+                tableContainer.classList.add(x.theme || "ag-theme-balham");
+                el.appendChild(commandContainer.getGui());
+                el.appendChild(tableContainer);
+                new agGrid.Grid(tableContainer, gridOptions);
             },
 
             resize: function(width, height) {
