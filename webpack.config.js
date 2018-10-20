@@ -1,9 +1,9 @@
-require("babel-polyfill");
+require("@babel/polyfill");
 const path = require('path');
 
 module.exports = {
   entry: [
-    './javascript/RagGrid.js',"babel-polyfill"],
+    './javascript/RagGrid.js',"@babel/polyfill"],
   optimization: {
     // We do not want to minimize our code.
     minimize: true
@@ -14,7 +14,7 @@ module.exports = {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
       },
-      { test: /\.js(x?)$/, loader: "babel-loader?presets[]=es2015" }
+      { test: /\.js(x?)$/, loader: "babel-loader" }
     ]
   },
   output: {
