@@ -1,7 +1,7 @@
 import { SparkLineUtils } from "./SparkLineUtils";
 import { AgGridUtil } from "./AgGridUtil";
 import { ErrorMessageUtils } from "./ErrorMessageUtils";
-import { CommandContainer } from "./CommandContainer";
+import { CommandContainer } from "./Components/CommandContainer";
 
 HTMLWidgets.widget({
   name: "RagGrid",
