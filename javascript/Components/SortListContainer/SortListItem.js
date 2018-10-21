@@ -26,7 +26,7 @@ class SortListItem extends JSXComponent {
       </div>
     );
 
-    $(filedSelection).click(() => {
+    $(filedSelection).click((event) => {
       event.stopPropagation();
       $(".btn-options").hide();
       $(columnsDropDown).toggle();

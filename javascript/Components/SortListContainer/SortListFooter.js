@@ -20,13 +20,11 @@ class SortListFooter extends JSXComponent {
       </div>
     );
 
-    $(fieldsMenu).click(() => {
+    $(fieldsMenu).click((event) => {
       event.stopPropagation();
       $(".btn-options").hide();
       $(columnsDropDown).toggle();
     });
-
-    debugger;
     
     return (
       <div className="flex-box sort-footer">

@@ -17,7 +17,7 @@ class ColumnsDropDown extends JSXComponent {
           (option, index) => props.ignoreIndexes.indexOf(index) === -1
         )
       : options;
-    var onItemSelect = item => {
+    var onItemSelect = (item,event) => {
       event.stopPropagation();
       $(columnsDropDown).hide();
       props.onItemSelect(item.index);

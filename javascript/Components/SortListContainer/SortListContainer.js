@@ -97,7 +97,7 @@ class SortListContainer extends JSXComponent {
     $(sortListContainer).hide();
     return (
       <div>
-        <Button icon="sort" className="sort-btn" text="Sort" onClick={()=>{
+        <Button icon="sort" className="sort-btn" text="Sort" onClick={(event)=>{
           event.stopPropagation();
           sortItems = oldSortItems.slice();
           updateContainer();
