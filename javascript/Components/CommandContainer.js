@@ -9,23 +9,25 @@ export class CommandContainer {
     this.gridOptions = gridOptions;
   }
 
-  createRowHeightButton() {
-   
-  }
+  onSortApply = sortItems => {
+    let colDefs = this.gridOptions.columnDefs;
+    let sortModel = sortItems.map(sortItem => {
+      return {
+        colId: colDefs[sortItem.columnIndex].field,
+        sort: sortItem.isAsc ? "asc" : "desc"
+      };
+    });
+    this.gridOptions.api.setSortModel(sortModel);
+  };
 
-  createSortMenu(){
-    var sortButton = <Button icon="sort" className="sort-btn" text="Sort"></Button>;
-    var sortList = <SortListContainer columns={this.gridOptions.columnDefs}></SortListContainer>
-    return(<div>
-      {sortButton}
-      {sortList}
-      </div>)
-  }
   getGui() {
     return (
       <div className="command-container">
-       {this.createSortMenu()}
-      <RowHeightContainer gridOptions={this.gridOptions}/>
+        <SortListContainer
+          columns={this.gridOptions.columnDefs}
+          onSubmit={this.onSortApply}
+        />
+        <RowHeightContainer gridOptions={this.gridOptions} />
       </div>
     );
   }

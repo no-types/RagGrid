@@ -4,23 +4,40 @@ import Button from "../base/Button";
 import ColumnsDropDown from "../ColumnsDropDown";
 class SortListFooter extends JSXComponent {
   render(props) {
-    var columnsDropDown = <ColumnsDropDown columns={props.columns} />;
+    var onItemSelect = itemIndex => {
+      props.onNewPick(itemIndex);
+    };
+    var columnsDropDown = (
+      <ColumnsDropDown
+        columns={props.columns}
+        ignoreIndexes={props.selectedIndexes}
+        onItemSelect={onItemSelect}
+      />
+    );
     var fieldsMenu = (
       <div className="flex-item pointer bold">
         Pick a field to sort {columnsDropDown}
       </div>
     );
+
     $(fieldsMenu).click(() => {
       event.stopPropagation();
+      $(".btn-options").hide();
       $(columnsDropDown).toggle();
     });
 
+    debugger;
+    
     return (
       <div className="flex-box sort-footer">
-        {fieldsMenu}
+        {props.selectedIndexes.length >= props.columns.length ? (
+          <div className="flex-item bold disabled">Pick a field to sort</div>
+        ) : (
+          fieldsMenu
+        )}
         <div className="flex-item flex-box">
-          <Button text="Apply" />
-          <Button text="Close" />
+          <Button text="Apply" onClick={props.onSubmit}/>
+          <Button text="Cancel" onClick={props.onCancel}/>
         </div>
       </div>
     );

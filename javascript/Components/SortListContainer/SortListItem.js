@@ -5,7 +5,16 @@ import ColumnsDropDown from "../ColumnsDropDown";
 import SortIndicator from "./SortIndicator";
 class SortListItem extends JSXComponent {
   render(props) {
-    var columnsDropDown = <ColumnsDropDown columns={props.columns} />;
+    var onItemChange = itemIndex => {
+      props.onPropChange(props.index, { columnIndex: itemIndex });
+    };
+    var columnsDropDown = (
+      <ColumnsDropDown
+        columns={props.columns}
+        onItemSelect={onItemChange}
+        ignoreIndexes={props.selectedIndexes}
+      />
+    );
     var activeColumn = props.columns[props.activeColumnIndex];
     var filedSelection = (
       <div className="flex-item flex-box field-selection">
@@ -19,14 +28,25 @@ class SortListItem extends JSXComponent {
 
     $(filedSelection).click(() => {
       event.stopPropagation();
+      $(".btn-options").hide();
       $(columnsDropDown).toggle();
     });
+
     var onSortToggle = isAsc => {
       props.onPropChange(props.index, { isAsc });
     };
+
+    var removeIcon = (
+      <Icon className="flex-item remove-icon pointer" iconPath="remove" />
+    );
+
+    $(removeIcon).click(() => {
+      props.onRemove(props.index);
+    });
+
     return (
       <div className="flex-box sort-list-item">
-        <Icon className="flex-item remove-icon" iconPath="remove" />
+        {removeIcon}
         <div className="flex-item">{props.index == 0 ? "Sort By" : "then"}</div>
         {filedSelection}
         <div className="flex-item">from</div>

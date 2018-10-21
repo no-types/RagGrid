@@ -1,30 +1,36 @@
 import JSXComponent from "jsx-render/lib/JSXComponent";
 import dom from "jsx-render";
 import DropDown from "./base/DropDown";
-import Button from "./base/Button";
+
 class ColumnsDropDown extends JSXComponent {
-render(props){
-    var options = props.columns.map(column => {
-        return {
-          text: column.headerName || "Row Header",
-          icon: column.enableValue ? "number" : "text",
-          value: column.field
-        };
-      });
-  
-      var onItemSelect = () => {
-        event.stopPropagation();
-        $(columnsDropDown).hide();
+  render(props) {
+    var options = props.columns.map((column, index) => {
+      return {
+        index,
+        text: column.headerName || "Row Header",
+        icon: column.enableValue ? "number" : "text",
+        value: column.field
       };
-  
-      var columnsDropDown = (
-        <DropDown
-          options={options}
-          onSelect={onItemSelect}
-          infoText="Select a field to Sort"
-        />
-      );
-      return columnsDropDown;
-}
+    });
+    options = props.ignoreIndexes
+      ? options.filter(
+          (option, index) => props.ignoreIndexes.indexOf(index) === -1
+        )
+      : options;
+    var onItemSelect = item => {
+      event.stopPropagation();
+      $(columnsDropDown).hide();
+      props.onItemSelect(item.index);
+    };
+
+    var columnsDropDown = (
+      <DropDown
+        options={options}
+        onSelect={onItemSelect}
+        infoText= {options.length===0?"All fields added to Sort":"Select a field to Sort"}
+      />
+    );
+    return columnsDropDown;
+  }
 }
 export default ColumnsDropDown;
