@@ -150,3 +150,6 @@
 .bold{
   font-weight: bold;
 }
+.disabled{
+  color: #bdc3c7 !important;
+}
