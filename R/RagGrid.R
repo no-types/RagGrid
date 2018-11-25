@@ -13,6 +13,8 @@
 #' @param filterOnSelect specify whether filter is need to be perfromed on selecting a row item
 #' @param licenseKey if you wish to use the enterprise version of ag-grid
 #' @param sparkLineOptions options for rendering sparkline in the table
+#' @param commandPanelItems options for rendering command panel in the table
+#' @param exportOptions options for exporting tabel data as csv
 #' @param width,height Width/Height in pixels (optional, defaults to automatic
 #'   sizing)
 #' @param elementId An id for the widget (a random string by default).
@@ -24,7 +26,7 @@
 #' aggrid(iris)
 #' 
 #' @export
-aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(),sparkLineOptions=list(),theme="ag-theme-balham",filterOnSelect=TRUE ,licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
+aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(), sparkLineOptions=list(), commandPanelItems=list(), exportOptions=list(), theme="ag-theme-balham", filterOnSelect=TRUE, licenseKey=NULL, width = NULL, height = NULL, elementId = NULL) {
 
   if (crosstalk::is.SharedData(data)) {
     # Using Crosstalk
@@ -81,6 +83,8 @@ aggrid <- function(data, options=list(), colOpts=list(), formattingOptions=list(
     theme=theme,
     sparkLineOptions=sparkLineOptions,
     filterOnSelect=filterOnSelect,
+    commandPanelItems=commandPanelItems,
+    exportOptions=exportOptions,
     settings = list(
       crosstalk_key = key,
       crosstalk_group = group

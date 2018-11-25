@@ -1,8 +1,18 @@
 {
-    "plugins": [
-      "@babel/plugin-syntax-jsx",
-      "@babel/plugin-proposal-object-rest-spread",
-      "@babel/plugin-proposal-class-properties",
-      ["@babel/plugin-transform-react-jsx", { "pragma": "dom" }]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "ie": "11"
+        }
+      }
     ]
-  }
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-jsx",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
+    ["@babel/plugin-transform-react-jsx", { "pragma": "dom" }]
+  ]
+}

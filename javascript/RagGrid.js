@@ -2,7 +2,7 @@ import { SparkLineUtils } from "./SparkLineUtils";
 import { AgGridUtil } from "./AgGridUtil";
 import { ErrorMessageUtils } from "./ErrorMessageUtils";
 import { CommandContainer } from "./Components/CommandContainer";
-
+import { FilterUtil } from "./FilterUtils";
 HTMLWidgets.widget({
   name: "RagGrid",
 
@@ -43,7 +43,7 @@ HTMLWidgets.widget({
         if (ErrorMessageUtils.checkWindowsViewerPane(el)) {
           return;
         }
-        const licenseKey = x.licenseKey;
+        const { licenseKey, commandPanelItems, exportOptions } = x;
         const rowHeight = SparkLineUtils.transformData(
           x.data,
           x.sparkLineOptions
@@ -68,7 +68,11 @@ HTMLWidgets.widget({
         if (licenseKey) {
           agGrid.LicenseManager.setLicenseKey(licenseKey);
         }
-
+        let commandContainer = new CommandContainer(
+          gridOptions,
+          commandPanelItems || {},
+          exportOptions
+        );
         gridOptions.columnDefs = colDef;
         gridOptions.rowData = AgGridUtil.getRowData(
           x.data,
@@ -78,6 +82,10 @@ HTMLWidgets.widget({
           return true;
         };
         gridOptions.doesExternalFilterPass = node => {
+          var filterItems = commandContainer.filterItems;
+          if (!FilterUtil.isDataValid(filterItems, node.data)) {
+            return false;
+          }
           if (
             isFilterOnSelect &&
             filteredValues.length !== 0 &&
@@ -90,11 +98,14 @@ HTMLWidgets.widget({
             return true;
           }
         };
-        let commandContainer = new CommandContainer(gridOptions);
+
         let tableContainer = document.createElement("div");
         tableContainer.setAttribute("class", "table-container");
         tableContainer.classList.add(x.theme || "ag-theme-balham");
-        el.appendChild(commandContainer.getGui());
+        let commandContainerElement = commandContainer.getGui();
+        if (commandPanelItems !== false && commandContainerElement.innerHTML!=="") {
+          el.appendChild(commandContainerElement);
+        }
         el.appendChild(tableContainer);
         new agGrid.Grid(tableContainer, gridOptions);
       },

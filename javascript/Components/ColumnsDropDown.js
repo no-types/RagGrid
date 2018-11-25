@@ -27,7 +27,7 @@ class ColumnsDropDown extends JSXComponent {
       <DropDown
         options={options}
         onSelect={onItemSelect}
-        infoText= {options.length===0?"All fields added to Sort":"Select a field to Sort"}
+        infoText= {props.infoMessage}
       />
     );
     return columnsDropDown;

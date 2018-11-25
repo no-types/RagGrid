@@ -28,7 +28,7 @@ class SortListItem extends JSXComponent {
 
     $(filedSelection).click((event) => {
       event.stopPropagation();
-      $(".btn-options").hide();
+      $(filedSelection).parent(".command-container").find(".btn-options").hide();
       $(columnsDropDown).toggle();
     });
 
@@ -47,7 +47,7 @@ class SortListItem extends JSXComponent {
     return (
       <div className="flex-box sort-list-item">
         {removeIcon}
-        <div className="flex-item">{props.index == 0 ? "Sort By" : "then"}</div>
+        <div className="flex-item">{props.index == 0 ? "Sort By" : "then by"}</div>
         {filedSelection}
         <div className="flex-item">from</div>
         <SortIndicator
