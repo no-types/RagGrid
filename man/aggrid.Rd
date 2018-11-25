@@ -6,6 +6,7 @@
 \usage{
 aggrid(data, options = list(), colOpts = list(),
   formattingOptions = list(), sparkLineOptions = list(),
+  commandPanelItems = list(), exportOptions = list(),
   theme = "ag-theme-balham", filterOnSelect = TRUE, licenseKey = NULL,
   width = NULL, height = NULL, elementId = NULL)
 }
@@ -22,6 +23,10 @@ aggrid(data, options = list(), colOpts = list(),
 \url{http://numeraljs.com/#format}) Also see \code{\link{formatColumns}()};}
 
 \item{sparkLineOptions}{options for rendering sparkline in the table}
+
+\item{commandPanelItems}{options for rendering command panel in the table}
+
+\item{exportOptions}{options for exporting tabel data as csv}
 
 \item{theme}{a theme class name that need to be applied for grid (see
 \url{https://www.ag-grid.com/javascript-grid-styling//});}

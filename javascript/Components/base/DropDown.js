@@ -4,10 +4,8 @@ import dom from "jsx-render";
 
 class DropDown extends JSXComponent {
   render(props) {
-
     // Constructing DropDown Items
     const options = props.options.map(option => {
-
       // On Selecting Item in DropDown
       var onClickHandler = el =>
         el.addEventListener("click", event => {
@@ -27,19 +25,23 @@ class DropDown extends JSXComponent {
           ref={onClickHandler}
           data-value={option.value}
         >
-          <Icon iconPath={option.icon} className="btn-option-icon" />
+          {option.icon ? (
+            <Icon iconPath={option.icon} className="btn-option-icon" />
+          ) : null}
           <div className="btn-option-txt">{option.text}</div>
         </div>
       );
     });
-    
-    let dropDown = (<div className="btn-options"> 
-    <div class="dropdown-info btn-option-item">{props.infoText}</div>
-    {options}
-    </div>);
+
+    let dropDown = (
+      <div className="btn-options">
+        <div class="dropdown-info btn-option-item">{props.infoText}</div>
+        {options}
+      </div>
+    );
 
     // For hiding drop down on clicking outside DropDown
-    $(document).click((e)=>{
+    $(document).click(e => {
       var container = $(dropDown);
       if (!container.is(e.target) && container.has(e.target).length === 0) {
         container.hide();

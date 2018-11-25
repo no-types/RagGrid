@@ -2,7 +2,7 @@ import JSXComponent from "jsx-render/lib/JSXComponent";
 import dom from "jsx-render";
 import Button from "../base/Button";
 import ColumnsDropDown from "../ColumnsDropDown";
-class SortListFooter extends JSXComponent {
+class FilterListFooter extends JSXComponent {
   render(props) {
     var onItemSelect = itemIndex => {
       props.onNewPick(itemIndex);
@@ -10,14 +10,14 @@ class SortListFooter extends JSXComponent {
     var columnsDropDown = (
       <ColumnsDropDown
         columns={props.columns}
-        ignoreIndexes={props.selectedIndexes}
+        ignoreIndexes={[]}
         onItemSelect={onItemSelect}
-        infoMessage={"Select a field to sort"}
+        infoMessage={"Select a field to filter"}
       />
     );
     var fieldsMenu = (
       <div className="flex-item pointer bold">
-        Pick a field to sort {columnsDropDown}
+        Pick a field to filter {columnsDropDown}
       </div>
     );
 
@@ -29,11 +29,7 @@ class SortListFooter extends JSXComponent {
     
     return (
       <div className="flex-box sort-footer">
-        {props.selectedIndexes.length >= props.columns.length ? (
-          <div className="flex-item bold disabled">Pick a field to sort</div>
-        ) : (
-          fieldsMenu
-        )}
+        {fieldsMenu}
         <div className="flex-item flex-box">
           <Button text="Apply" onClick={props.onSubmit}/>
           <Button text="Cancel" onClick={props.onCancel}/>
@@ -42,4 +38,4 @@ class SortListFooter extends JSXComponent {
     );
   }
 }
-export default SortListFooter;
+export default FilterListFooter;

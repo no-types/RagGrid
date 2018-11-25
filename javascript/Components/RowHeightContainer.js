@@ -49,15 +49,16 @@ class RowHeightContainer extends JSXComponent {
         value={options[0].value}
       />
     );
-    var button = <Button icon="rowHeight.short" className="row-height-btn" />;
-    button.addEventListener("click", event => {
-      event.stopPropagation();
-      $(dropDown).toggle();
-    });
-
     return (
       <div className="row-height-container">
-        {button}
+        <Button
+          icon="rowHeight.short"
+          className="row-height-btn"
+          onClick={event => {
+            event.stopPropagation();
+            $(dropDown).toggle();
+          }}
+        />
         {dropDown}
       </div>
     );

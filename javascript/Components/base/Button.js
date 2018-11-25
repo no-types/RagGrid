@@ -4,14 +4,29 @@ import Icon from "./Icon";
 
 class Button extends JSXComponent {
   render(props) {
-    return (
-      <div className={"command-btn btn "+(props.className || " ")+" "+(props.text?"btn-text":"btn-no-text")}>
-        {props.icon ? <Icon iconPath={props.icon} className="command-btn-icon"></Icon>  : null}
+    var button = (
+      <div
+        className={
+          "command-btn btn " +
+          (props.className || " ") +
+          " " +
+          (props.text ? "btn-text" : "btn-no-text")
+        }
+      >
+        {props.icon ? (
+          <Icon iconPath={props.icon} className="command-btn-icon" />
+        ) : null}
         {props.text ? (
           <div className="command-btn-text">{props.text}</div>
         ) : null}
       </div>
     );
+
+    if (props.onClick) {
+      $(button).click(props.onClick);
+    }
+
+    return button;
   }
 }
 
