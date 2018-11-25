@@ -3,7 +3,6 @@
   border: 1px solid lightgray;
   height: 35px;
   font-size: 13px;
-  justify-content: space-around;
 }
 .table-container {
   height: calc(100% - 35px);
@@ -131,7 +130,7 @@
   margin-top: 2px;
   padding-right: 2px;
 }
-.remove-icon,
+
 .drag-icon {
   padding-top: 9px;
 }
@@ -198,7 +197,9 @@
 .filter-order-label{
   min-width: 24px;
 }
-
-.command-container-item{
-
+.command-container > div {
+  padding-left: 10px;
+}
+.remove-icon {
+  padding-top: 6px;
 }

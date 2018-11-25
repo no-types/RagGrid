@@ -35,8 +35,8 @@ class SortListFooter extends JSXComponent {
           fieldsMenu
         )}
         <div className="flex-item flex-box">
-          <Button text="Apply" onClick={props.onSubmit}/>
-          <Button text="Cancel" onClick={props.onCancel}/>
+          {/* <Button text="Apply" onClick={props.onSubmit}/> */}
+          <Button text="Close" onClick={props.onCancel}/>
         </div>
       </div>
     );

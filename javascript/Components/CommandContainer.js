@@ -43,9 +43,6 @@ export class CommandContainer {
     debugger;
     return (
       <div className="command-container">
-        {this.commandPanelItems.searchBar === false ? null : (
-          <div className="quick-search">{quickSearchInput}</div>
-        )}
         {this.commandPanelItems.filter === false ? null : (
           <FilterListContainer
             columns={this.gridOptions.columnDefs}
@@ -71,6 +68,9 @@ export class CommandContainer {
               }}
             />
           </div>
+        )}
+        {this.commandPanelItems.searchBar === false ? null : (
+          <div className="quick-search">{quickSearchInput}</div>
         )}
       </div>
     );

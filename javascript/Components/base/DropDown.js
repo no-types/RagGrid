@@ -34,7 +34,7 @@ class DropDown extends JSXComponent {
     });
 
     let dropDown = (
-      <div className="btn-options">
+      <div className={"btn-options " + (props.className || "")}>
         <div class="dropdown-info btn-option-item">{props.infoText}</div>
         {options}
       </div>

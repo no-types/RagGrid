@@ -45,6 +45,7 @@ class RowHeightContainer extends JSXComponent {
       <DropDown
         options={options}
         onSelect={onSelect}
+        className="command-item-container"
         infoText="Select a row height"
         value={options[0].value}
       />
@@ -56,7 +57,12 @@ class RowHeightContainer extends JSXComponent {
           className="row-height-btn"
           onClick={event => {
             event.stopPropagation();
-            $(dropDown).toggle();
+            let isShown = $(dropDown).is(":visible");
+            $(dropDown)
+              .closest(".command-container")
+              .find(".command-item-container")
+              .hide();
+            isShown ? $(dropDown).hide() : $(dropDown).show();
           }}
         />
         {dropDown}

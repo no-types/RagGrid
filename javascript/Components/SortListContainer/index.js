@@ -8,7 +8,6 @@ import SortListFooter from "./SortListFooter";
 
 class SortListContainer extends JSXComponent {
   render(props) {
-    
     var sortItems = [];
     var oldSortItems = [];
     var getSelectedIndexes = () => {
@@ -21,6 +20,7 @@ class SortListContainer extends JSXComponent {
       return selectedIndexes;
     };
     var updateContainer = () => {
+      props.onSubmit(sortItems);
       $(sortListItemsDiv).html(getSortListItems());
       $(sortListFooter).html(getSortListFooter());
     };
@@ -75,7 +75,7 @@ class SortListContainer extends JSXComponent {
     };
 
     var onCancel = () => {
-      sortItems = oldSortItems.slice();
+      // sortItems = oldSortItems.slice();
       $(sortListContainer).hide();
     };
     var getSortListFooter = () => (
@@ -89,7 +89,7 @@ class SortListContainer extends JSXComponent {
     );
     var sortListFooter = <div>{getSortListFooter()}</div>;
     var sortListContainer = (
-      <div className="sort-list-container">
+      <div className="sort-list-container command-item-container">
         {sortListItemsDiv}
         {sortListFooter}
       </div>
@@ -97,12 +97,21 @@ class SortListContainer extends JSXComponent {
     $(sortListContainer).hide();
     return (
       <div>
-        <Button icon="sort" className="sort-btn" text="Sort" onClick={(event)=>{
-          event.stopPropagation();
-          sortItems = oldSortItems.slice();
-          updateContainer();
-          $(sortListContainer).toggle();
-        }} />
+        <Button
+          icon="sort"
+          className="sort-btn"
+          text="Sort"
+          onClick={event => {
+            event.stopPropagation();
+            let isShown = $(sortListContainer).is(":visible");
+            $(sortListContainer)
+              .closest(".command-container")
+              .find(".command-item-container")
+              .hide();
+            updateContainer();
+            isShown ? $(sortListContainer).hide() : $(sortListContainer).show();
+          }}
+        />
         {sortListContainer}
       </div>
     );
