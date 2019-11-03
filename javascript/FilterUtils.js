@@ -24,6 +24,9 @@ export class FilterUtil {
       let currentFilter = filter[i];
       let dataValue = data[currentFilter.field];
       let currentValidation = true;
+      if(currentFilter.value==="" && (currentFilter.type!=="is empty" || currentFilter.type!=="is not empty")){
+        break;
+      }
       if (typeof dataValue === "number") {
         try {
           const filterValue = currentFilter.value.indexOf(".")!==-1 ? parseFloat
