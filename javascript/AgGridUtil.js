@@ -59,27 +59,29 @@ export class AgGridUtil{
     static getColDef({data,isNumeric,sparkLineOptions,licenseKey,colOpts,formattingOptions,rowHeaders}){
         const columnHeaders = Object.keys(data);
       
-        let colDef = columnHeaders.map((columnHeader) => {
+        const colDef = columnHeaders.map((columnHeader) => {
             const isColNumeric = isNumeric[columnHeader];
-            let options = {
+            const options = {
                 headerName: columnHeader,
                 field: AgGridUtil.escape(columnHeader),
                 enableValue: isColNumeric,
                 filter : isColNumeric ? "agNumberColumnFilter" : "agTextColumnFilter"
             };
-            let sparkLineColDefOptions = SparkLineUtils.getSparkLineColDefOptions(sparkLineOptions,columnHeader);
-            let numericOptions = AgGridUtil.getNumericOptions(isColNumeric,formattingOptions[columnHeader]);
-            let userOptions = colOpts[columnHeader] || {};
-            let enterpriseColDefOptions = AgGridUtil.getEnterpriseColDefOptions(isColNumeric,licenseKey);
+            const sparkLineColDefOptions = SparkLineUtils.getSparkLineColDefOptions(sparkLineOptions,columnHeader);
+            const numericOptions = AgGridUtil.getNumericOptions(isColNumeric,formattingOptions[columnHeader]);
+            const userOptions = colOpts[columnHeader] || {};
+            const enterpriseColDefOptions = AgGridUtil.getEnterpriseColDefOptions(isColNumeric,licenseKey);
             return Object.assign(options, enterpriseColDefOptions,sparkLineColDefOptions,numericOptions,userOptions);
         });
 
         if(rowHeaders){
+            const userOptions = colOpts["rowHeader"];
             colDef.unshift({
                 field : "rowHeaders",
                 headerName : "", 
                 enablePivot : licenseKey ? false : undefined,
                 enableRowGroup  : licenseKey ? false : undefined,
+                ...userOptions
             });
         }
         
