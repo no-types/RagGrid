@@ -71,6 +71,9 @@ HTMLWidgets.widget({
                     }
                 };
 
+                // clear any previous renders
+                document.getElementById(el.id).innerHTML = '';
+
                 el.setAttribute("class", x.theme || "ag-theme-balham");
                 new agGrid.Grid(el, gridOptions);
             },
