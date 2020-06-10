@@ -82,13 +82,11 @@ HTMLWidgets.widget({
                     }
                 };
 
-                $el = $(el);
-
                 // note: we need to clear any existing element before building a new grid
-                $el.innerHTML = "";
+                el.innerHTML = "";
 
                 // note: we need to add a class here... but do not want to replace other classes - e.g shiny binding classes
-                $el.addClass(x.theme || "ag-theme-balham");
+                el.classList.add(x.theme || "ag-theme-balham");
 
                 //console.log("returning new grid")
                 new agGrid.Grid(el, gridOptions);
