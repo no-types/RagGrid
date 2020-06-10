@@ -34,7 +34,7 @@ HTMLWidgets.widget({
             }
         });
         filter_handle.on("change", function(e) {
-            console.log("change called")
+            //console.log("change called")
             console.log(e);
         });
         return {
