@@ -8,6 +8,8 @@ HTMLWidgets.widget({
     type: 'output',
 
     factory: function(el, width, height) {
+        //console.log("local repo being used!");
+
         let gridOptions = {};
         let filteredValues=[];
         let isFilterOnSelect=true;
@@ -32,19 +34,28 @@ HTMLWidgets.widget({
             }
         });
         filter_handle.on("change", function(e) {
+            //console.log("change called")
             console.log(e);
         });
         return {
 
-            renderValue: function(x) {                
+            renderValue: function(x) {
+                //console.log("Starting to render")
                 if(ErrorMessageUtils.checkWindowsViewerPane(el)){
                     return;
                 }
+
+                if (x === null)
+                {
+                    el.innerHTML = "&nbsp;";
+                    return;
+                }
+
                 const licenseKey = x.licenseKey;
                 const rowHeight = SparkLineUtils.transformData(x.data,x.sparkLineOptions);
                 isFilterOnSelect = x.filterOnSelect;
                 var defaultGridOptions = AgGridUtil.getDefaultGridOptions(rowHeight,sel_handle,licenseKey);
-                
+
                 if (x.settings.crosstalk_group) {
                     sel_handle.setGroup(x.settings.crosstalk_group);
                     filter_handle.setGroup(x.settings.crosstalk_group);
@@ -52,13 +63,13 @@ HTMLWidgets.widget({
 
                 gridOptions = Object.assign(defaultGridOptions, x.gridOptions);
                 let colDef = AgGridUtil.getColDef(x);
-                if(x.rowHeaders){ 
+                if(x.rowHeaders){
                     x.data['rowHeaders'] = x.rowHeaders;
                 }
                 if (licenseKey) {
                     agGrid.LicenseManager.setLicenseKey(licenseKey);
                 }
-                
+
                 gridOptions.columnDefs = colDef;
                 gridOptions.rowData = AgGridUtil.getRowData(x.data,x.settings.crosstalk_key);
                 gridOptions.isExternalFilterPresent = () => {return true;};
@@ -71,13 +82,20 @@ HTMLWidgets.widget({
                     }
                 };
 
-                el.setAttribute("class", x.theme || "ag-theme-balham");
+                // note: we need to clear any existing element before building a new grid
+                el.innerHTML = "";
+
+                // note: we need to add a class here... but do not want to replace other classes - e.g shiny binding classes
+                el.classList.add(x.theme || "ag-theme-balham");
+
+                //console.log("returning new grid")
                 new agGrid.Grid(el, gridOptions);
             },
 
             resize: function(width, height) {
 
-                // TODO: code to re-render the widget with a new size
+                //console.log("resize called with " + width + " and " + height);
+                el.height(height)
 
             }
 
